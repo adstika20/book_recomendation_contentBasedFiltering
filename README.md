@@ -31,37 +31,90 @@ Dalam algoritma ini, kami mencoba menemukan item pencarian yang mirip. Misalnya,
 
 ## Data Understanding
 
-Kali ini pada pembuatan sistem rekomendasi, saya menggunakan Book Recommendation Dataset dari Kaggle. Dataset bisa diunduh [disini](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset). 
- 
-**Read Data**
+Kali ini pada pembuatan sistem rekomendasi, saya menggunakan Book Recommendation Dataset dari Kaggle. Dataset bisa diunduh [disini](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset). Variabel-variabel pada Book Recommendation Dataset adalah sebagai berikut:
 
-Variabel-variabel pada Book Recommendation Dataset adalah sebagai berikut:
 - Buku
+
 Buku diidentifikasi dengan ISBN masing-masing. ISBN yang tidak valid telah dihapus dari set data. Selain itu, beberapa informasi berbasis konten diberikan ( Book-Title, Book-Author, Year-Of-Publication, Publisher), diperoleh dari Amazon Web Services. Perhatikan bahwa dalam kasus beberapa penulis, hanya yang pertama disediakan. URL yang menautkan ke gambar sampul juga diberikan, muncul dalam tiga rasa berbeda ( Image-URL-S, Image-URL-M, Image-URL-L), yaitu, kecil, sedang, besar. URL ini mengarah ke situs web Amazon.
 - Rating
+
 Berisi informasi rating buku. Peringkat ( Book-Rating) baik eksplisit, dinyatakan dalam skala 1-10 (nilai yang lebih tinggi menunjukkan apresiasi yang lebih tinggi), atau implisit, dinyatakan dengan 0.
 
-**Visualisasi Data**
+**1. Exploratory Data Analysis**
 
+Pada step ini, lakukanlah analisa sederhana, seperti describe(), info(), dan juga visualisasi agar kita dapatkan suatu insight dari dataset.
+Jumlah dataset buku 271360 baris 8 kolom, dan jumlah dataset rating 1149780 baris 3 kolom. Berdasarkan jumlah data rating dan books terbilang banyak, di sini saya hanya mengambil 10000 baris book dataset dan 5000 baris untuk rating dataset. 
 
-Sekarang di file buku, kami memiliki beberapa kolom tambahan yang tidak diperlukan untuk tugas kami seperti URL gambar. Dan kita akan menamai ulang kolom-kolom dari setiap file karena nama kolom tersebut berisi spasi, dan huruf kapital sehingga kita akan perbaiki agar mudah digunakan.
+Data Buku
 
-**Exploratory Data Analysis**
+![image](https://user-images.githubusercontent.com/110407053/192125666-a2ab4ddd-2228-4a79-8c1c-88ce35eef5b3.png)
+Data Rating
+
+![image](https://user-images.githubusercontent.com/110407053/192125641-d1c1bd8b-7153-4eb0-bb81-6c5d3b971cf2.png)
+
+Pada dataset buku, ada beberapa kolom yang di hapus karena tidak diperlukan untuk proyek ini seperti URL gambar. 
+
+Mengecek informasi pada dataset dengan fungsi info() berikut.
+
+![image](https://user-images.githubusercontent.com/110407053/192125760-b76667e1-32e5-4821-9614-6b1620ae928d.png)
+
+Berdasarkan informasi buku dataset memiliki 5 kolom dengan tipe ogject.
+
+![image](https://user-images.githubusercontent.com/110407053/192125751-9d8f3903-394b-4be4-b502-0455e1958e0f.png)
+
+Berdasarkan informasi rating dataset memiliki 2 kolom dengan tipe int64 yaitu user_id, rating dan 1 bertipe object yaitu ISBN
+
+Dan kita akan menamai ulang kolom-kolom dari setiap file karena nama kolom tersebut berisi spasi, dan huruf kapital sehingga perlu diperbaiki agar mudah digunakan.
+
+#### 2. Visualisasi data buku dan rating
+
+![image](https://user-images.githubusercontent.com/110407053/192126113-b68c29d5-a43b-4ebf-8955-fbd4c07fe058.png)
+
+Pada gambar diatas menunjukan bahwa kategori penulis (top 50) terbanyak adalah stephen king dengan total 70 buku 
+
+![image](https://user-images.githubusercontent.com/110407053/192127390-b82f6f39-0f43-4502-8da7-6ca5a84a8dd9.png)
+
+Pada gambar diatas menunjukan bahwa buku teratas (top 20) dengan judul The golden compass dengan jumlah 4 buku 
+
+![image](https://user-images.githubusercontent.com/110407053/192127095-1cf41a45-670c-45f8-8522-7e3346f83a62.png)
+
 
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+Pada bagian akan menerapkan beberapa proses antara lain sebagai berikut :
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+**1. Cek missing value**
+
+![image](https://user-images.githubusercontent.com/110407053/192125779-5fc21f42-fb35-4c25-b230-6073a0e7f376.png)
+![image](https://user-images.githubusercontent.com/110407053/192125783-9d2f91d7-1a63-478e-ab9f-99f9a2de779e.png)
+
+Data buku dan rating tidak memiliki missing value sehingga bisa diteruskan untuk proses selanjutnya.
+
+**2. Membuang data duplikat**
+
+Selanjutnya, proyek ini hanya akan menggunakan data unik untuk dimasukkan ke dalam proses pemodelan. Oleh karena itu, perlu menghapus data yang duplikat dengan fungsi drop_duplicates(). Proses ini dilakukan supaya dataset tetap memiliki integritas dan tidak berulang.
+
+**3. konversi data series menjadi list**
+
+Selanjutnya, kita perlu melakukan konversi data series menjadi list. Dalam hal ini, kita menggunakan fungsi tolist() dari library numpy. Implementasikan kode berikut.
+
+GAMBAR PRINT LEN LIST...............
+
+**4. Membuat dictionary**
+
+Tahap berikutnya, kita akan membuat dictionary untuk menentukan pasangan key-value pada data book_ISBN, book_author, book_title dan book_year_of_publication yang telah kita siapkan sebelumnya.
 
 ## Modeling
-Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
-- Menjelaskan kelebihan dan kekurangan dari solusi/pendekatan yang dipilih.
+Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Kini, saatnya mengembangkan sistem rekomendasi dengan pendekatan content based filtering dan collaborative filtering.
+
+#### 1. Model Development dengan Content Based Filtering 
+
+###### TF-IDF Vectorizer
+
+Pada tahap ini, kita akan membangun sistem rekomendasi sederhana berdasarkan jenis masakan yang disediakan restoran. Anda telah belajar mengenai TF-IDF Vectorizer pada modul Sentiment Analysis
+
+
 
 ## Evaluation
 Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
