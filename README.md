@@ -145,10 +145,10 @@ Dengan cosine similarity, kita berhasil mengidentifikasi kesamaan antara satu bu
 ###### Mendapatkan Rekomendasi
 
 Untuk mendaptkan rekomendasi, kita membuat fungsi author_recommendations dengan beberapa parameter sebagai berikut: 
-* - i : sebagai judul buku (index kemiripan dataframe)
-* - M : Dataframe mengenai similarity yang telah kita definisikan sebelumnya.
-* - items : nama dan fitur yang digunakan untuk mendefinisikan kemiripan, dalam hal ini adalah 'book_title'  dan 'book_author'
-* - k : banyak rekomendasi yang ingin diberikan
+*  i : sebagai judul buku (index kemiripan dataframe)
+*  M : Dataframe mengenai similarity yang telah kita definisikan sebelumnya.
+*  items : nama dan fitur yang digunakan untuk mendefinisikan kemiripan, dalam hal ini adalah 'book_title'  dan 'book_author'
+*  k : banyak rekomendasi yang ingin diberikan
 
 Dengan menggunakan argpartition, kita mengambil sejumlah nilai k tertinggi dari similarity data (dalam kasus ini: dataframe cosine_sim_df). Kemudian, kita mengambil data dari bobot (tingkat kesamaan) tertinggi ke terendah. Data ini dimasukkan ke dalam variabel closest. Berikutnya, kita perlu menghapus book_title' yang dicari agar tidak muncul dalam daftar rekomendasi. Dalam kasus ini, nanti kita akan mencari nama penulis dari judul buku "Un Giorno Dopo L'altro" yang telah di baca, selain nama nanti akan keluar informasi ISBN, judul buku lain yang mirip , dan  tahun publikasi. Oleh karena itu, perlu drop terlebih dahulu 'book_title', 'book_author' agar tidak muncul dalam daftar rekomendasi yang diberikan nanti.  
 
@@ -166,7 +166,46 @@ Collaborative filtering bergantung pada pendapat komunitas pengguna. Ia tidak me
 
 Goal proyek kita kali ini adalah menghasilkan rekomendasi sejumlah restoran yang sesuai dengan preferensi pengguna berdasarkan rating yang telah diberikan sebelumnya. Dari data rating pengguna, kita akan mengidentifikasi restoran-restoran yang mirip dan belum pernah dikunjungi oleh pengguna untuk direkomendasikan. Kita akan menggunakan teknik collaborative filtering untuk membuat rekomendasi ini. 
 
+###### Data Preparation
+Selanjutnya, pahami terlebih dahulu data rating yang kita miliki. Load data di awal dan membaca file ratings.csv. Selanjutnya  melakukan persiapan data untuk menyandikan (encode) fitur ‘user’ dan ‘user_id’ ke dalam indeks integer. Berikut adalah sebagian output-nya:
 
+![image](https://user-images.githubusercontent.com/110407053/192146267-18984e31-c03e-43bf-aac9-de677386e87f.png)
+
+
+Selanjutnya, lakukan hal yang sama pada fitur ‘ISBN’. Terakhir petakan ISBN dan user_id ke dataframe yang berkaitan. Output jumlah user, jumlah BUKU, dan mengubah nilai rating menjadi float.
+
+![image](https://user-images.githubusercontent.com/110407053/192146479-cf897f6b-6c1a-4235-96e3-0cfbff2692e2.png)
+
+Tahap persiapan telah selesai. Berikut adalah hal-hal yang telah kita lakukan pada tahap ini:
+
+- Memahami data rating yang kita miliki.
+- Menyandikan (encode) fitur ‘user_id’ dan ‘ISBN’ ke dalam indeks integer. 
+- Memetakan ‘user_id’ dan ‘ISBN’ ke dataframe yang berkaitan.
+- Mengecek beberapa hal dalam data seperti jumlah user, jumlah resto, kemudian mengubah nilai rating menjadi float.
+- Terakhir menghitung min rating dan max rating
+Tahap persiapan ini penting dilakukan agar data siap digunakan untuk pemodelan. 
+
+###### Membagi Data untuk Training dan Validasi
+
+Sebelum membagi data training dan validasi, perlu mengacak dataset terlebih dahulu agar distribusinya menjadi random.
+
+![image](https://user-images.githubusercontent.com/110407053/192146756-53958519-98ad-470c-bad8-7eac523014d7.png)
+
+Selanjutnya, kita bagi data train dan validasi dengan komposisi 70:30. Namun sebelumnya, kita perlu memetakan (mapping) data user dan buku menjadi satu value terlebih dahulu. Lalu, buatlah rating dalam skala 0 sampai 1 agar mudah dalam melakukan proses training. 
+
+![image](https://user-images.githubusercontent.com/110407053/192146813-2567a043-87bc-4697-8020-8a699c8de48d.png)
+
+Data telah siap untuk dimasukkan ke dalam model.
+
+###### Proses Training
+Pada tahap ini, model menghitung skor kecocokan antara pengguna dan buku dengan teknik embedding. Pertama, kita melakukan proses embedding terhadap data user dan buku. Selanjutnya, lakukan operasi perkalian dot product antara embedding user dan buku. Selain itu, kita juga dapat menambahkan bias untuk setiap user dan buku. Skor kecocokan ditetapkan dalam skala [0,1] dengan fungsi aktivasi sigmoid.
+
+Di sini, kita membuat class RecommenderNet dengan keras Model class. Kode class RecommenderNet ini terinspirasi dari tutorial dalam situs [Keras](https://keras.io/examples/structured_data/collaborative_filtering_movielens/) dengan beberapa adaptasi sesuai kasus yang sedang kita selesaikan. Model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer, dan root mean squared error (RMSE) sebagai metrics evaluation. Sebagian output-nya adalah sebagai berikut.
+
+![image](https://user-images.githubusercontent.com/110407053/192147072-634a2a0d-c611-4c26-8861-93efa8539707.png)
+
+
+![image](https://user-images.githubusercontent.com/110407053/192147032-639ffb2a-3f83-4a2d-a8c9-8adde0cc539a.png)
 
 
 ## Evaluation
