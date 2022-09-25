@@ -79,7 +79,6 @@ Pada gambar diatas menunjukan bahwa buku teratas (top 20) dengan judul The golde
 ![image](https://user-images.githubusercontent.com/110407053/192127095-1cf41a45-670c-45f8-8522-7e3346f83a62.png)
 
 
-
 ## Data Preparation
 Pada bagian akan menerapkan beberapa proses antara lain sebagai berikut :
 
@@ -98,17 +97,22 @@ Selanjutnya, proyek ini hanya akan menggunakan data unik untuk dimasukkan ke dal
 
 Selanjutnya, kita perlu melakukan konversi data series menjadi list. Dalam hal ini, kita menggunakan fungsi tolist() dari library numpy. Implementasikan kode berikut.
 
-GAMBAR PRINT LEN LIST...............
+![image](https://user-images.githubusercontent.com/110407053/192132320-1f3f074b-9606-42b5-9352-387e4347fb87.png)
 
 **4. Membuat dictionary**
 
 Tahap berikutnya, kita akan membuat dictionary untuk menentukan pasangan key-value pada data book_ISBN, book_author, book_title dan book_year_of_publication yang telah kita siapkan sebelumnya.
 
+![image](https://user-images.githubusercontent.com/110407053/192132323-15dc1450-f3c1-44ba-b227-cb44ce653692.png)
+
+
 ## Modeling
 
 Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Kini, saatnya mengembangkan sistem rekomendasi dengan pendekatan content based filtering dan collaborative filtering.
 
-#### 1. Model Development dengan Content Based Filtering 
+#### 1. Model Development dengan Content Based Filtering
+
+Ide dari sistem rekomendasi berbasis konten (content-based filtering) adalah merekomendasikan item yang mirip dengan item yang disukai pengguna di masa lalu. Algoritma ini bekerja dengan menyarankan item serupa yang pernah disukai di masa lalu atau sedang dilihat di masa kini kepada pengguna. Semakin banyak informasi yang diberikan pengguna, semakin baik akurasi sistem rekomendasi. Pada proyek ini model content based filtering hanya menggunakan data buku sedangkan data rating tidak diperlukan.
 
 ###### TF-IDF Vectorizer
 
@@ -116,23 +120,53 @@ TF-IDF adalah singkatan dari Term Frequency Inverse Document Frequency. Ini adal
 TF-IDF Vectorizer scikit-learn. (2021). Retrieved 25 September 2022, from https://medium.com/@cmukesh8688/tf-idf-vectorizer-scikit-learn-dbc0244a911a)
 Pada tahap ini, kita akan membangun sistem rekomendasi judul buku berdasarkan penulisnya. TfidfVectorizer dapat menangani nama-nama penulis seberapa sering mereka muncul dalam dokumen. 
 
-gambar tfid................
+![image](https://user-images.githubusercontent.com/110407053/192132335-1b2a50b4-b28f-4dca-83b0-f106a2a81e2b.png)
 
-Selanjutnya, lakukan fit dan transformasi ke dalam bentuk matriks. Perhatikanlah, matriks yang kita miliki berukuran (10000, 5575). Nilai 10000 merupakan ukuran data dan 5575 merupakan nama penulis. Selanjutnya ubah tfid menjadi matriks dengan fungsi todense()
 
-gambar todense...........
+Selanjutnya, lakukan fit dan transformasi ke dalam bentuk matriks. 
+
+Perhatikanlah, matriks yang kita miliki berukuran (10000, 5575). Nilai 10000 merupakan ukuran data dan 5575 merupakan nama penulis. Selanjutnya ubah tfid menjadi matriks dengan fungsi todense()
+
+![image](https://user-images.githubusercontent.com/110407053/192132359-2f7e5f79-f3e9-45df-bb22-aa1eefe6e252.png)
 
 Selanjutnya, mari kita lihat matriks tf-idf untuk beberapa judul buku dengan penulis buku. Sampai di sini, telah berhasil mengidentifikasi representasi fitur penting dari setiap judul buku dengan fungsi tfidfvectorizer. Kita juga telah menghasilkan matriks yang menunjukkan korelasi antara judul buku dengan penulis. Selanjutnya, kita akan menghitung derajat kesamaan antara satu buku dengan penulis lainnya untuk menghasilkan kandidat penulis yang akan direkomendasikan.
 
 ###### Cosine Similarity
 
-Cosine Similarity mengukur kesamaan antara dua vektor ruang hasil kali dalam. Ini diukur dengan kosinus sudut antara dua vektor dan menentukan apakah dua vektor menunjuk ke arah yang kira-kira sama. ![[3]](https://medium.com/@manturdipa/book-recommender-system-ec8bbaa983a8) kita akan menghitung derajat kesamaan (similarity degree) antar restoran dengan teknik cosine similarity. Di sini, kita menggunakan fungsi cosine_similarity dari library sklearn. Pada tahapan ini, kita menghitung cosine similarity dataframe tfidf_matrix yang kita peroleh pada tahapan sebelumnya. Dengan satu baris kode untuk memanggil fungsi cosine similarity dari library sklearn, kita telah berhasil menghitung kesamaan (similarity) antar restoran. Kode di atas menghasilkan keluaran berupa matriks kesamaan dalam bentuk array. 
+Cosine Similarity mengukur kesamaan antara dua vektor ruang hasil kali dalam. Ini diukur dengan kosinus sudut antara dua vektor dan menentukan apakah dua vektor menunjuk ke arah yang kira-kira sama. ![[3]](https://medium.com/@manturdipa/book-recommender-system-ec8bbaa983a8) kita akan menghitung derajat kesamaan (similarity degree) antar judul buku dengan teknik cosine similarity. Di sini, kita akan menghitung cosine similarity dataframe tfidf_matrix yang kita peroleh pada tahapan sebelumnya. Dengan satu baris kode untuk memanggil fungsi cosine similarity dari library sklearn, kita telah berhasil menghitung kesamaan (similarity) antar judul buku. Menghasilkan keluaran berupa matriks kesamaan dalam bentuk array. 
 
-gambar similarity...........
+![image](https://user-images.githubusercontent.com/110407053/192132374-272e6936-5c5a-477f-98ca-e6ced898481a.png)
 
-Selanjutnya, mari kita lihat matriks kesamaan setiap resto dengan menampilkan nama restoran dalam 5 sampel kolom (axis = 1) dan 10 sampel baris (axis=0). Jalankan kode berikut.
+Dengan cosine similarity, kita berhasil mengidentifikasi kesamaan antara satu buku dengan buku lainnya. Shape (10000, 10000) merupakan ukuran matriks similarity dari data yang kita miliki. Berdasarkan data yang ada, matriks di atas sebenarnya berukuran 10000 judul buku  x 10000 judul buku (masing-masing dalam sumbu X dan Y). Artinya, kita mengidentifikasi tingkat kesamaan pada 10000 judul buku. Tapi tentu kita tidak bisa menampilkan semuanya. Oleh karena itu, kita hanya memilih 10 judul buku pada baris vertikal dan 5 restoran pada sumbu horizontal seperti pada contoh di atas. 
+
+![image](https://user-images.githubusercontent.com/110407053/192132384-776c057d-9c8c-41b1-b941-8ffee9776c20.png)
+
 
 ###### Mendapatkan Rekomendasi
+
+Untuk mendaptkan rekomendasi, kita membuat fungsi author_recommendations dengan beberapa parameter sebagai berikut: 
+* - i : sebagai judul buku (index kemiripan dataframe)
+* - M : Dataframe mengenai similarity yang telah kita definisikan sebelumnya.
+* - items : nama dan fitur yang digunakan untuk mendefinisikan kemiripan, dalam hal ini adalah 'book_title'  dan 'book_author'
+* - k : banyak rekomendasi yang ingin diberikan
+
+Dengan menggunakan argpartition, kita mengambil sejumlah nilai k tertinggi dari similarity data (dalam kasus ini: dataframe cosine_sim_df). Kemudian, kita mengambil data dari bobot (tingkat kesamaan) tertinggi ke terendah. Data ini dimasukkan ke dalam variabel closest. Berikutnya, kita perlu menghapus book_title' yang dicari agar tidak muncul dalam daftar rekomendasi. Dalam kasus ini, nanti kita akan mencari nama penulis dari judul buku "Un Giorno Dopo L'altro" yang telah di baca, selain nama nanti akan keluar informasi ISBN, judul buku lain yang mirip , dan  tahun publikasi. Oleh karena itu, perlu drop terlebih dahulu 'book_title', 'book_author' agar tidak muncul dalam daftar rekomendasi yang diberikan nanti.  
+
+![image](https://user-images.githubusercontent.com/110407053/192132396-b63527c3-ced0-4170-90db-ccde4792dd28.png)
+
+Perhatikanlah, judul buku "Un Giorno Dopo L'altro" penulisnya adalah Carlo Lucarelli. Tentu kita berharap rekomendasi yang diberikan adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
+
+![image](https://user-images.githubusercontent.com/110407053/192132404-7d00533e-2705-41bd-914d-148f4a8f4b81.png)
+
+
+
+#### 2. Model Development dengan Collaborative Filtering
+
+Collaborative filtering bergantung pada pendapat komunitas pengguna. Ia tidak memerlukan atribut untuk setiap itemnya seperti pada sistem berbasis konten. Pada materi ini, kita akan menerapkan teknik collaborative filtering untuk membuat sistem rekomendasi. Teknik ini membutuhkan data rating dari user. 
+
+Goal proyek kita kali ini adalah menghasilkan rekomendasi sejumlah restoran yang sesuai dengan preferensi pengguna berdasarkan rating yang telah diberikan sebelumnya. Dari data rating pengguna, kita akan mengidentifikasi restoran-restoran yang mirip dan belum pernah dikunjungi oleh pengguna untuk direkomendasikan. Kita akan menggunakan teknik collaborative filtering untuk membuat rekomendasi ini. 
+
+
 
 
 ## Evaluation
