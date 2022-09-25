@@ -78,6 +78,9 @@ Pada gambar diatas menunjukan bahwa buku teratas (top 20) dengan judul The golde
 
 ![image](https://user-images.githubusercontent.com/110407053/192127095-1cf41a45-670c-45f8-8522-7e3346f83a62.png)
 
+Umpan Balik Implisit: Suka dan tidak suka pengguna dicatat dan dicatat berdasarkan tindakannya seperti klik, pencarian, dan pembelian. Mereka ditemukan dalam jumlah besar tetapi umpan balik negatif tidak ditemukan.
+
+Umpan Balik Eksplisit: Pengguna menentukan suka atau tidak sukanya dengan tindakan seperti bereaksi terhadap item atau memberi peringkat. Ini memiliki umpan balik positif dan negatif tetapi jumlahnya lebih sedikit
 
 ## Data Preparation
 Pada bagian akan menerapkan beberapa proses antara lain sebagai berikut :
@@ -204,32 +207,51 @@ Di sini, kita membuat class RecommenderNet dengan keras Model class. Kode class 
 
 ## Evaluation
 
-#### 2. Evaluation Model Development dengan Collaborative Filtering
+#### 1. Evaluation Model Development dengan Collaborative Filtering
 
-Evaluasi dilakukan untuk mengetahui peforma akurasi dan error yang terjadi. Saya menggunakan metode evaluasi RMSE. Root Mean Square Error (RMSE) adalah jumlah dari kesalahan kuadrat atau selisih antara nilai sebenarnya dengan nilai prediksi yang telah ditentukan.  Rumus formula RMSE adalah sebagai berikut :
+Evaluasi dilakukan untuk mengetahui peforma akurasi dan error yang terjadi. RMSE Melihat perbedaan antara peringkat yang diprediksi oleh sistem pemberi rekomendasi dan peringkat aktual yang diberikan oleh pengguna. RMSE yang rendah menunjukkan bahwa sistem pemberi rekomendasi mampu memprediksi peringkat pengguna secara akurat.k. Saya menggunakan metode evaluasi RMSE. Root Mean Square Error (RMSE) adalah jumlah dari kesalahan kuadrat atau selisih antara nilai sebenarnya dengan nilai prediksi yang telah ditentukan.  Rumus formula RMSE adalah sebagai berikut : 
 
+![image](https://user-images.githubusercontent.com/110407053/192153091-af28de1e-434f-4c23-be7d-c33068bc7dfd.png)
 
+Y ' = Nilai Prediksi 
+Y   = Nilai Sejati
+n    = Jumlah Data
 
-Seperti MAE, Mean Squared error juga menangani tanda negatif tetapi dengan mengkuadratkan prediksi. MSE tidak bekerja dengan baik ketika kami memiliki peringkat pada skala yang berbeda, untuk alasan ini, kami mengambil akar dari kesalahan kuadrat Rata-rata untuk mendapatkan RMSE. Ini menormalkan hasil rata-rata ke skala yang sama. RMSE juga lebih baik dalam menangani outlier.
-
-MAE, dan FCP untuk kedua algortima yang digunakan.
-Model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer, dan root mean squared error (RMSE) sebagai metrics evaluation. Sebagian output-nya adalah sebagai berikut.
+Dengan mengggunakan matriks RMSE output dari modelnya adalah sebagai berikut.
 
 ![image](https://user-images.githubusercontent.com/110407053/192147072-634a2a0d-c611-4c26-8861-93efa8539707.png)
 
 
 ![image](https://user-images.githubusercontent.com/110407053/192147032-639ffb2a-3f83-4a2d-a8c9-8adde0cc539a.png)
 
+Perhatikanlah, proses training model cukup baik dan model konvergen pada epochs sekitar 20. Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.22 dan error pada data validasi sebesar 0.34. Nilai RMSE rendah menunjukkan bahwa variasi nilai yang dihasilkan oleh suatu model prakiraan mendekati variasi nilai obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai. Semakin kecil nilai RMSE, semakin dekat nilai yang diprediksi dan diamati. Nilai tersebut cukup bagus untuk sistem rekomendasi. Mari kita cek, apakah model ini bisa membuat rekomendasi dengan baik.
 
-Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
+![image](https://user-images.githubusercontent.com/110407053/192157169-db62c88a-feb2-41f5-a1a6-ed6d033b1228.png)
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+Selamat! Anda telah berhasil memberikan rekomendasi kepada user 277235 . dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang sudah pernah dibaca pengguna) dan Top 10 Book Recommendation for user.   
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+Perhatikanlah, beberapa buku rekomendasi menyediakan White Teeth: A Novel : Zadie Smith
+Girl in Hyacinth Blue : Susan Vreeland yang sesuai dengan rating user / sudah pernah di baca pengguna.
 
-**---Ini adalah bagian akhir laporan---**
+Kita memperoleh rekomendasi judul buku beserta penulisnya yaitu buku White Teeth: A Novel : Zadie Smith
+Girl in Hyacinth Blue : Susan Vreeland
 
-_Catatan:_
+Prediksi yang dihasilkan cukup sesuai. Sampai di tahap ini, Anda telah berhasil membuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan Collaborative Filtering. Sistem rekomendasi yang Anda buat telah berhasil memberikan sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna. 
+
+
+#### 2. Evaluation Model Development dengan Content Based Filtering
+
+Matik evaluasi untuk model berbasis konten dengan menghitung akurasi yang diperoleh dengan menghitung jumlah buku yang di rekomendasikan sesuai dengan penulis/jumlah buku yang ditulis oleh penulis yang sama. 
+
+![image](https://user-images.githubusercontent.com/110407053/192157742-71e61641-92b3-4037-b584-3f10ccb81bf2.png)
+
+
+Variabel books_that_have_been_read_row di bawah ini akan mengambil satu row dari buku yang pernah dibaca sebelumnya, dan variabel books_that_have_been_read_author adalah penulis buku dari buku yang pernah dibaca sebelumnya
+
+Variabel books_with_the_same_author menunjukkan jumlah buku yang sudah ditulis oleh penulis buku yang berasal dari buku yang pernah dibaca sebelumnya
+Ternyata buku yang telah ditulis oleh Mark Twain berjumlah 16 buku, oleh karena itu
+
+## REFERENCES
+
 - _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
 - Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
