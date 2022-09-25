@@ -200,7 +200,20 @@ Data telah siap untuk dimasukkan ke dalam model.
 ###### Proses Training
 Pada tahap ini, model menghitung skor kecocokan antara pengguna dan buku dengan teknik embedding. Pertama, kita melakukan proses embedding terhadap data user dan buku. Selanjutnya, lakukan operasi perkalian dot product antara embedding user dan buku. Selain itu, kita juga dapat menambahkan bias untuk setiap user dan buku. Skor kecocokan ditetapkan dalam skala [0,1] dengan fungsi aktivasi sigmoid.
 
-Di sini, kita membuat class RecommenderNet dengan keras Model class. Kode class RecommenderNet ini terinspirasi dari tutorial dalam situs [Keras](https://keras.io/examples/structured_data/collaborative_filtering_movielens/) dengan beberapa adaptasi sesuai kasus yang sedang kita selesaikan. Model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer, dan root mean squared error (RMSE) sebagai metrics evaluation. Sebagian output-nya adalah sebagai berikut.
+Di sini, kita membuat class RecommenderNet dengan keras Model class. Kode class RecommenderNet ini terinspirasi dari tutorial dalam situs [Keras](https://keras.io/examples/structured_data/collaborative_filtering_movielens/) dengan beberapa adaptasi sesuai kasus yang sedang kita selesaikan. 
+
+## Evaluation
+
+#### 2. Evaluation Model Development dengan Collaborative Filtering
+
+Evaluasi dilakukan untuk mengetahui peforma akurasi dan error yang terjadi. Saya menggunakan metode evaluasi RMSE. Root Mean Square Error (RMSE) adalah jumlah dari kesalahan kuadrat atau selisih antara nilai sebenarnya dengan nilai prediksi yang telah ditentukan.  Rumus formula RMSE adalah sebagai berikut :
+
+
+
+Seperti MAE, Mean Squared error juga menangani tanda negatif tetapi dengan mengkuadratkan prediksi. MSE tidak bekerja dengan baik ketika kami memiliki peringkat pada skala yang berbeda, untuk alasan ini, kami mengambil akar dari kesalahan kuadrat Rata-rata untuk mendapatkan RMSE. Ini menormalkan hasil rata-rata ke skala yang sama. RMSE juga lebih baik dalam menangani outlier.
+
+MAE, dan FCP untuk kedua algortima yang digunakan.
+Model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer, dan root mean squared error (RMSE) sebagai metrics evaluation. Sebagian output-nya adalah sebagai berikut.
 
 ![image](https://user-images.githubusercontent.com/110407053/192147072-634a2a0d-c611-4c26-8861-93efa8539707.png)
 
@@ -208,7 +221,6 @@ Di sini, kita membuat class RecommenderNet dengan keras Model class. Kode class 
 ![image](https://user-images.githubusercontent.com/110407053/192147032-639ffb2a-3f83-4a2d-a8c9-8adde0cc539a.png)
 
 
-## Evaluation
 Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
 
 Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
