@@ -57,6 +57,7 @@ Pada file rating terdapat beberapa variabel-variabel yaitu :
 Jumlah dataset buku ada 271360 baris 8 kolom, dan jumlah dataset rating ada 1149780 baris 3 kolom. Berdasarkan jumlah data rating dan books yang terbilang banyak, di sini saya hanya mengambil 10000 baris book dataset dan 5000 baris untuk rating dataset. 
 
 **1. Exploratory Data Analysis**
+Melihat book dataset dan rating dataset menggunakan fungsi head().
 
 Data Buku
 
