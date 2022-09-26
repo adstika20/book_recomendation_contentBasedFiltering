@@ -8,43 +8,55 @@ Membaca merupakan salah satu kegiatan yang lekat dengan kehidupan sehari-hari se
 
 Oleh karena itu pemahaman seseorang terhadap pentingnya membaca merupakan hal yang penting untuk dipelajari. Namun perlu digaris bawahi bahwa membaca juga bisa menimbulkan bahaya, karena apa yang dibaca seseorang akan mempengaruhi karakter yang terbentuk dari pengetahuan yang ia dapat dari buku tersebut. Salah satu langkah yang ditempuh dalam menyediakan bahan bacaan adalah dengan memilah dan memilih jenis bacaan atau buku apa yang seharusnya dibaca, baik dengan mengenali Penulisnya, Kenali sinopsisnya dan lain sebagainya. Berdasarkan hal itu dengan kemajuan bidang ilmu pengetahuan dan  teknologi dibuatlah sebuah sistem rekomendasi yang berguna bagi pengguna internet yang mungkin merasa sulit untuk memilih dari banyak produk dan layanan yang tersedia. Sistem Rekomendasi dapat memprediksi seberapa besar kemungkinan pengguna target akan tertarik dengan item yang mungkin tidak diketahui olehnya. [[1]](https://aclanthology.org/C18-1033.pdf). 
 
-Melihat pentingnya dampak buku bagi kehidupan kita serta banyaknya buku yang telah dan akan terbit, kita membutuhkan sistem rekomendasi yang akan menyaring buku - buku sesuai dengan selera dan ketertarikan kita. Dengan adanya sistem rekomendasi ini, kita tidak perlu lama - lama dalam mencari buku sesuai ketertarikan kita. Sistem rekomendasi sangat penting di beberapa industri karena dapat menghasilkan pendapatan dalam jumlah besar. Sebagai bukti pentingnya sistem pemberi rekomendasi, kami dapat menyebutkan bahwa, beberapa tahun yang lalu, Netflix mengadakan tantangan ("hadiah Netflix") di mana tujuannya adalah untuk menghasilkan sistem pemberi rekomendasi yang berkinerja lebih baik daripada algoritmanya sendiri dengan hadiah dari 1 juta dolar untuk menang.
+Melihat pentingnya dampak buku bagi kehidupan kita serta banyaknya buku yang telah dan akan terbit, kita membutuhkan sistem rekomendasi yang akan menyaring buku - buku sesuai dengan selera dan ketertarikan kita. Dengan adanya sistem rekomendasi ini, kita tidak perlu lama - lama dalam mencari buku sesuai ketertarikan kita. Sistem rekomendasi sangat penting di beberapa industri karena dapat menghasilkan pendapatan dalam jumlah besar. Sebagai bukti pentingnya sistem pemberi rekomendasi, kami dapat menyebutkan bahwa, beberapa tahun yang lalu, _Netflix_ mengadakan tantangan ("hadiah _Netflix_") di mana tujuannya adalah untuk menghasilkan sistem pemberi rekomendasi yang berkinerja lebih baik daripada algoritmanya sendiri dengan hadiah dari 1 juta dolar untuk menang.
 
 ## Business Understanding
 
-Sistem rekomendasi buku adalah jenis sistem rekomendasi di mana kita harus merekomendasikan buku sejenis kepada pembaca berdasarkan minatnya. Sistem rekomendasi buku digunakan oleh situs online yang menyediakan ebook seperti google play books, open library, good Read's dan lain-lain.
+Sistem rekomendasi buku adalah jenis sistem rekomendasi di mana kita harus merekomendasikan buku sejenis kepada pembaca berdasarkan minatnya. Sistem rekomendasi buku digunakan oleh situs online yang menyediakan ebook seperti _google play books_, _open library_, _good Read's_ dan lain-lain.
 
 ### Problem Statements
 Kembangkan sebuah sistem rekomendasi Buku untuk menjawab permasalahan berikut:
-- Berdasarkan data mengenai pengguna, bagaimana membuat sistem rekomendasi yang dipersonalisasi dengan teknik content-based filtering?
+- Berdasarkan data mengenai pengguna, bagaimana membuat sistem rekomendasi yang dipersonalisasi dengan teknik _content-based filtering_?
 - Dengan data rating yang Anda miliki, bagaimana merekomendasikan buku lain yang mungkin disukai dan belum pernah dibaca oleh pengguna? 
 
-### Goals
+### _Goals_
 Untuk  menjawab pertanyaan tersebut, buatlah sistem rekomendasi dengan tujuan atau goals sebagai berikut:
-- Menghasilkan sejumlah rekomendasi Buku yang dipersonalisasi untuk pengguna dengan teknik content-based filtering.
-- Menghasilkan sejumlah rekomendasi Buku yang sesuai dengan preferensi pengguna dan belum pernah dibaca sebelumnya dengan teknik collaborative filtering.
+- Menghasilkan sejumlah rekomendasi Buku yang dipersonalisasi untuk pengguna dengan teknik _content-based filtering_.
+- Menghasilkan sejumlah rekomendasi Buku yang sesuai dengan preferensi pengguna dan belum pernah dibaca sebelumnya dengan teknik _collaborative filtering_.
 
-**Solution statements**:
+**_Solution statements_**:
 
-Pada latihan kali ini kita akan menggunakan dua metode yaitu content dan collaborative based filter yaitu :
-- Pada Content Based Flter, kita akan menggunakan penulis buku menjadi pusat sebagai pusat dari sistem rekomendasi. 
-Dalam algoritma ini, kami mencoba menemukan item pencarian yang mirip. Misalnya, seseorang suka menonton bidikan Sachin Tendulkar, maka dia mungkin juga suka menonton bidikan Ricky Ponting karena kedua video tersebut memiliki tag dan kategori yang mirip.
-- Pada Collaborative Based Flter, kita akan menggunakan penilaian dari berbagai pengguna sebagai pusat dari sistem rekomendasi. Sistem pemberi rekomendasi penyaringan berbasis kolaboratif didasarkan pada interaksi pengguna dan item target sebelumnya. Dengan kata sederhana di sini, kami mencoba mencari pelanggan yang mirip dan menawarkan produk berdasarkan apa yang mereka pilih.
+Pada latihan kali ini kita akan menggunakan dua metode yaitu _content_ dan _collaborative based filter_ yaitu :
+- Pada _Content Based Flter_, kita akan menggunakan penulis buku menjadi pusat sebagai pusat dari sistem rekomendasi. 
+Dalam algoritma ini, kami mencoba menemukan item pencarian yang mirip. Misalnya, seseorang suka menonton bidikan Sachin Tendulkar, maka dia mungkin juga suka menonton bidikan _Ricky Ponting_ karena kedua video tersebut memiliki tag dan kategori yang mirip.
+- Pada _Collaborative Based Flter_, kita akan menggunakan penilaian dari berbagai pengguna sebagai pusat dari sistem rekomendasi. Sistem pemberi rekomendasi penyaringan berbasis kolaboratif didasarkan pada interaksi pengguna dan item target sebelumnya. Dengan kata sederhana di sini, kami mencoba mencari pelanggan yang mirip dan menawarkan produk berdasarkan apa yang mereka pilih.
 
 ## Data Understanding
 
-Kali ini pada pembuatan sistem rekomendasi, saya menggunakan Book Recommendation Dataset dari Kaggle. Dataset bisa diunduh [disini](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset). Variabel-variabel pada Book Recommendation Dataset adalah sebagai berikut:
+Kali ini pada pembuatan sistem rekomendasi, saya menggunakan Book Recommendation Dataset dari Kaggle. Dataset bisa diunduh [disini](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset).   
+Dataset _Book Recommendation_ memiliki 2 file antara lain :
 
 - Buku
 
-Buku diidentifikasi dengan ISBN masing-masing. ISBN yang tidak valid telah dihapus dari set data. Selain itu, beberapa informasi berbasis konten diberikan ( Book-Title, Book-Author, Year-Of-Publication, Publisher), diperoleh dari Amazon Web Services. Perhatikan bahwa dalam kasus beberapa penulis, hanya yang pertama disediakan. URL yang menautkan ke gambar sampul juga diberikan, muncul dalam tiga rasa berbeda ( Image-URL-S, Image-URL-M, Image-URL-L), yaitu, kecil, sedang, besar. URL ini mengarah ke situs web Amazon.
-- Rating
+Pada file buku terdapat beberapa variabel-variabel yaitu :
+1. ISBN untuk mengidentifikasi jenis-jenis buku
+2. Book-Title : Judul buku yang menerima ulasan pembaca,
+3. Book-Author : Penulis buku yang menerima ulasan pembaca
+4. Year-Of-Publication : Tahun publikasi buku
+5. Publisher : Nama penerbit buku
+6. Image-URL-S, URL yang menautkan ke gambar sampul juga diberikan dengan ukuran kecil(S)
+7. Image-URL-M, URL yang menautkan ke gambar sampul juga diberikan dengan ukuran sedang(M)
+8. Image-URL-L, URL yang menautkan ke gambar sampul juga diberikan dengan ukuran besar(L)
+ Semua URL tersebut mengarah ke situs web Amazon.
 
-Berisi informasi rating buku. Peringkat ( Book-Rating) baik eksplisit, dinyatakan dalam skala 1-10 (nilai yang lebih tinggi menunjukkan apresiasi yang lebih tinggi), atau implisit, dinyatakan dengan 0.
+- Rating
+Pada file rating terdapat beberapa variabel-variabel yaitu :
+1. user_id : Id pengguna yang telah membaca dan memberi rating
+2. ISBN : untuk mengidentifikasi jenis-jenis buku
+3. rating: Peringkat ( Book-Rating) baik eksplisit, dinyatakan dalam skala 1-10 (nilai yang lebih tinggi menunjukkan apresiasi yang lebih tinggi), atau implisit, dinyatakan dengan 0.
+Jumlah dataset buku ada 271360 baris 8 kolom, dan jumlah dataset rating ada 1149780 baris 3 kolom. Berdasarkan jumlah data rating dan books yang terbilang banyak, di sini saya hanya mengambil 10000 baris book dataset dan 5000 baris untuk rating dataset. 
 
 **1. Exploratory Data Analysis**
-
-Jumlah dataset buku 271360 baris 8 kolom, dan jumlah dataset rating 1149780 baris 3 kolom. Berdasarkan jumlah data rating dan books yang terbilang banyak, di sini saya hanya mengambil 10000 baris book dataset dan 5000 baris untuk rating dataset. 
 
 Data Buku
 
@@ -53,7 +65,7 @@ Data Rating
 
 ![image](https://user-images.githubusercontent.com/110407053/192125641-d1c1bd8b-7153-4eb0-bb81-6c5d3b971cf2.png)
 
-Pada dataset buku, ada beberapa kolom yang di hapus karena tidak diperlukan untuk proyek ini seperti URL gambar. 
+Pada dataset buku, ada beberapa kolom yang di hapus karena tidak diperlukan untuk proyek ini seperti Image-URL-S,Image-URL-M,Image-URL-L. 
 
 Mengecek informasi pada dataset dengan fungsi info() berikut.
 
@@ -81,18 +93,20 @@ Pada gambar diatas menunjukan bahwa buku teratas (top 20) dengan judul The golde
 
 Output diatas menunjukkan informasi sebagai berikut :
 - Menghitung jumlah total rating 1116, jumlah rating explisit 485 dan jumlah rating implisit 631
-- Feedback Implisit (rating implisit) adalah Suka dan tidak suka pengguna dicatat dan dicatat berdasarkan tindakannya seperti klik, pencarian, dan pembelian. Mereka ditemukan dalam jumlah besar tetapi umpan balik negatif tidak ditemukan.
-- Feedback Eksplisit (rating implisit) adalah Pengguna menentukan suka atau tidak sukanya dengan tindakan seperti bereaksi terhadap item atau memberi peringkat. Ini memiliki umpan balik positif dan negatif tetapi jumlahnya lebih sedikit
+- _Feedback Implisit_ (rating implisit) adalah Suka dan tidak suka pengguna dicatat dan dicatat berdasarkan tindakannya seperti klik, pencarian, dan pembelian. Mereka ditemukan dalam jumlah besar tetapi umpan balik negatif tidak ditemukan.
+- _Feedback Eksplisit_ (rating implisit) adalah Pengguna menentukan suka atau tidak sukanya dengan tindakan seperti bereaksi terhadap item atau memberi peringkat. Ini memiliki umpan balik positif dan negatif tetapi jumlahnya lebih sedikit
 
 ## Data Preparation
 Pada bagian akan menerapkan beberapa proses antara lain sebagai berikut :
 
 **1. Cek missing value**
 
+Selanjutnya, mari kita cek lagi datanya apakah ada missing value atau tidak. Karena datanya terdiri dari ratusan bahkan ribuan baris tentu akan susah dalam menemukan nilai field yang kosong. Oleh karena itu, Pandas memungkinkan kita dapat menemukan missing value secara cepat dengan fungsi isna() dan sum(). Fungsi isna() untuk mengidentifikasi nilai yang hilang, dan fungsi sum() untuk menghitungnya.
+
 ![image](https://user-images.githubusercontent.com/110407053/192125779-5fc21f42-fb35-4c25-b230-6073a0e7f376.png)
 ![image](https://user-images.githubusercontent.com/110407053/192125783-9d2f91d7-1a63-478e-ab9f-99f9a2de779e.png)
 
-Data buku dan rating tidak memiliki missing value sehingga bisa diteruskan untuk proses selanjutnya.
+Data buku dan rating tidak memiliki _missing value_ sehingga bisa diteruskan untuk proses selanjutnya.
 
 **2. Membuang data duplikat**
 
@@ -110,6 +124,23 @@ Tahap berikutnya, kita akan membuat dictionary untuk menentukan pasangan key-val
 
 ![image](https://user-images.githubusercontent.com/110407053/192132323-15dc1450-f3c1-44ba-b227-cb44ce653692.png)
 
+###### Encode user_id
+Pada metode _collaborative filtering_ perlu melakukan persiapan data untuk menyandikan (encode) fitur ‘user’ dan ‘user_id’ ke dalam indeks integer. Berikut adalah sebagian output-nya:
+
+![image](https://user-images.githubusercontent.com/110407053/192146267-18984e31-c03e-43bf-aac9-de677386e87f.png)
+
+Selanjutnya, lakukan hal yang sama pada fitur ‘ISBN’. Terakhir petakan ISBN dan user_id ke dataframe yang berkaitan. Output jumlah user, jumlah BUKU, dan mengubah nilai rating menjadi float.
+
+![image](https://user-images.githubusercontent.com/110407053/192146479-cf897f6b-6c1a-4235-96e3-0cfbff2692e2.png)
+
+Tahap persiapan telah selesai. Berikut adalah hal-hal yang telah kita lakukan pada tahap ini:
+
+- Memahami data rating yang kita miliki.
+- Menyandikan (encode) fitur ‘user_id’ dan ‘ISBN’ ke dalam indeks integer. 
+- Memetakan ‘user_id’ dan ‘ISBN’ ke dataframe yang berkaitan.
+- Mengecek beberapa hal dalam data seperti jumlah user, jumlah resto, kemudian mengubah nilai rating menjadi float.
+- Terakhir menghitung min rating dan max rating
+Tahap persiapan ini penting dilakukan agar data siap digunakan untuk pemodelan. 
 
 ## Modeling
 
@@ -156,34 +187,20 @@ Untuk mendaptkan rekomendasi, kita membuat fungsi author_recommendations dengan 
 
 Dengan menggunakan argpartition, kita mengambil sejumlah nilai k tertinggi dari similarity data (dalam kasus ini: dataframe cosine_sim_df). Kemudian, kita mengambil data dari bobot (tingkat kesamaan) tertinggi ke terendah. Data ini dimasukkan ke dalam variabel closest. Berikutnya, kita perlu menghapus book_title' yang dicari agar tidak muncul dalam daftar rekomendasi. Dalam kasus ini, nanti kita akan mencari nama penulis dari judul buku "The Diaries of Adam and Eve" yang telah di baca, selain nama nanti akan keluar informasi ISBN, judul buku lain yang mirip , dan  tahun publikasi. Oleh karena itu, perlu drop terlebih dahulu 'book_title', 'book_author' agar tidak muncul dalam daftar rekomendasi yang diberikan nanti.  Buku "The Diaries of Adam and Eve" penulisnya adalah Mark Twain. Tentu kita berharap rekomendasi yang diberikan adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
 
-![image](![image](https://user-images.githubusercontent.com/110407053/192181265-d83d5cd9-f413-443a-b424-9f5d81bb1e66.png))
+![image](https://user-images.githubusercontent.com/110407053/192181265-d83d5cd9-f413-443a-b424-9f5d81bb1e66.png)
 
 Berdasarkan output di atas ada 5 buku yaitu yang direkomendasikan sesuai dengan rekomendasi yang di minta sebelumnya.
 
 #### 2. Model Development dengan Collaborative Filtering
 
+Pada Modeling kamu hanya perlu menyebutkan tahapan pemodelan seperti teknik embedding dan RecommenderNet, dan training pada collaborative filtering.
+
+Silahkan juga menyajikan top-N recommendation sebagai output. Jadi cantumkan hasil rekomendasi dari collaborative filtering pada bagian Modeling.
+
+
 Collaborative filtering bergantung pada pendapat komunitas pengguna. Ia tidak memerlukan atribut untuk setiap itemnya seperti pada sistem berbasis konten. Pada materi ini, kita akan menerapkan teknik collaborative filtering untuk membuat sistem rekomendasi. Teknik ini membutuhkan data rating dari user. 
 
 Goal proyek kita kali ini adalah menghasilkan rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna berdasarkan rating yang telah diberikan sebelumnya. Dari data rating pengguna, kita akan mengidentifikasi buku-buku yang mirip dan belum pernah dibaca oleh pengguna untuk direkomendasikan. Kita akan menggunakan teknik collaborative filtering untuk membuat rekomendasi ini. 
-
-###### Data Preparation
-Selanjutnya, pahami terlebih dahulu data rating yang kita miliki. Load data di awal dan membaca file ratings.csv. Selanjutnya  melakukan persiapan data untuk menyandikan (encode) fitur ‘user’ dan ‘user_id’ ke dalam indeks integer. Berikut adalah sebagian output-nya:
-
-![image](https://user-images.githubusercontent.com/110407053/192146267-18984e31-c03e-43bf-aac9-de677386e87f.png)
-
-
-Selanjutnya, lakukan hal yang sama pada fitur ‘ISBN’. Terakhir petakan ISBN dan user_id ke dataframe yang berkaitan. Output jumlah user, jumlah BUKU, dan mengubah nilai rating menjadi float.
-
-![image](https://user-images.githubusercontent.com/110407053/192146479-cf897f6b-6c1a-4235-96e3-0cfbff2692e2.png)
-
-Tahap persiapan telah selesai. Berikut adalah hal-hal yang telah kita lakukan pada tahap ini:
-
-- Memahami data rating yang kita miliki.
-- Menyandikan (encode) fitur ‘user_id’ dan ‘ISBN’ ke dalam indeks integer. 
-- Memetakan ‘user_id’ dan ‘ISBN’ ke dataframe yang berkaitan.
-- Mengecek beberapa hal dalam data seperti jumlah user, jumlah resto, kemudian mengubah nilai rating menjadi float.
-- Terakhir menghitung min rating dan max rating
-Tahap persiapan ini penting dilakukan agar data siap digunakan untuk pemodelan. 
 
 ###### Membagi Data untuk Training dan Validasi
 
@@ -236,6 +253,10 @@ Girl in Hyacinth Blue : Susan Vreeland
 Prediksi yang dihasilkan cukup sesuai. Sampai di tahap ini, Anda telah berhasil membuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan Collaborative Filtering. Sistem rekomendasi yang Anda buat telah berhasil memberikan sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna. 
 
 #### 2. Evaluation Model Development dengan Content Based Filtering
+
+
+Pada Evaluation, Untuk model content based filtering kamu dapat menggunakan metrik precision. Kamu bisa pelajari precision untuk sistem rekomendasi pada diskusi berikut:
+https://www.dicoding.com/academies/319/discussions/134402 
 
 Matik evaluasi untuk model berbasis konten dengan menghitung jumlah buku yang di rekomendasikan sesuai dengan penulis/jumlah buku yang ditulis oleh penulis yang sama. 
 
