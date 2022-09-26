@@ -4,27 +4,29 @@
 
 **Latar Belakang**:
 
-Membaca merupakan salah satu kegiatan yang lekat dengan kehidupan sehari-hari seseorang. Konsep utama dari membaca adalah memahami makna yang terkandung dalam sebuah teks. Terbukti bahwa orang yang memiliki kebiasaan membaca yang tinggi pasti memiliki wawasan yang luas, membaca dapat juga membuat seseorang mengenal, mengetahui serta memahami apa yang belum dikenal, diketahui dan dipahami. Oleh karena itu pemahaman seseorang terhadap pentingnya pemahaman membaca (reading comprehension) merupakan hal yang penting untuk dipelajari. Namun perlu digaris bawahi bahwa membaca juga bisa menimbulkan bahaya, karena apa yang dibaca seseorang akan mempengaruhi karakter yang terbentuk dari pengetahuan yang ia dapat dari buku tersebut. Salah satu langkah yang ditempuh dalam menyediakan bahan bacaan adalah dengan memilah dan memilih jenis bacaan atau buku apa yang seharusnya dibaca, baik dengan mengenali Penulisnya, Kenali sinopsisnya,  Memakai style bahasa yang gampang dipahami dan lain sebagainya. Berdasarkan hal itu dengan kemajuan bidang ilmu pengetahuan danteknologi dibuatlah sebuah sistem rekomendasi yang berguna bagi pengguna internet yang mungkin merasa sulit untuk memilih dari banyak produk dan layanan yang tersedia. Sistem Rekomendasi dapat memprediksi seberapa besar kemungkinan pengguna target akan tertarik dengan item yang mungkin tidak diketahui olehnya. [[1]](https://aclanthology.org/C18-1033.pdf). 
+Membaca merupakan salah satu kegiatan yang lekat dengan kehidupan sehari-hari seseorang. Konsep utama dari membaca adalah memahami makna yang terkandung dalam sebuah teks. Terbukti bahwa orang yang memiliki kebiasaan membaca yang tinggi pasti memiliki wawasan yang luas, membaca dapat juga membuat seseorang mengenal, mengetahui serta memahami apa yang belum dikenal, diketahui dan dipahami. 
 
-Melihat pentingnya dampak buku bagi kehidupan kita, kita perlu banyak membaca buku. Ketika kita membaca buku, kita pasti memiliki ketertarikan kepada satu atau beberapa bidang. Dikarenakan banyaknya buku yang telah dan akan terbit, kita membutuhkan sistem rekomendasi yang akan menyaring buku - buku sesuai dengan selera dan ketertarikan kita. Dengan adanya sistem rekomendasi ini, kita tidak perlu lama - lama dalam mencari buku sesuai ketertarikan kita. Sistem rekomendasi sangat penting di beberapa industri karena dapat menghasilkan pendapatan dalam jumlah besar ketika efisien atau juga menjadi cara untuk menonjol secara signifikan dari pesaing. Sebagai bukti pentingnya sistem pemberi rekomendasi, kami dapat menyebutkan bahwa, beberapa tahun yang lalu, Netflix mengadakan tantangan ("hadiah Netflix") di mana tujuannya adalah untuk menghasilkan sistem pemberi rekomendasi yang berkinerja lebih baik daripada algoritmanya sendiri dengan hadiah dari 1 juta dolar untuk menang.
+Oleh karena itu pemahaman seseorang terhadap pentingnya membaca merupakan hal yang penting untuk dipelajari. Namun perlu digaris bawahi bahwa membaca juga bisa menimbulkan bahaya, karena apa yang dibaca seseorang akan mempengaruhi karakter yang terbentuk dari pengetahuan yang ia dapat dari buku tersebut. Salah satu langkah yang ditempuh dalam menyediakan bahan bacaan adalah dengan memilah dan memilih jenis bacaan atau buku apa yang seharusnya dibaca, baik dengan mengenali Penulisnya, Kenali sinopsisnya dan lain sebagainya. Berdasarkan hal itu dengan kemajuan bidang ilmu pengetahuan dan  teknologi dibuatlah sebuah sistem rekomendasi yang berguna bagi pengguna internet yang mungkin merasa sulit untuk memilih dari banyak produk dan layanan yang tersedia. Sistem Rekomendasi dapat memprediksi seberapa besar kemungkinan pengguna target akan tertarik dengan item yang mungkin tidak diketahui olehnya. [[1]](https://aclanthology.org/C18-1033.pdf). 
+
+Melihat pentingnya dampak buku bagi kehidupan kita serta banyaknya buku yang telah dan akan terbit, kita membutuhkan sistem rekomendasi yang akan menyaring buku - buku sesuai dengan selera dan ketertarikan kita. Dengan adanya sistem rekomendasi ini, kita tidak perlu lama - lama dalam mencari buku sesuai ketertarikan kita. Sistem rekomendasi sangat penting di beberapa industri karena dapat menghasilkan pendapatan dalam jumlah besar. Sebagai bukti pentingnya sistem pemberi rekomendasi, kami dapat menyebutkan bahwa, beberapa tahun yang lalu, Netflix mengadakan tantangan ("hadiah Netflix") di mana tujuannya adalah untuk menghasilkan sistem pemberi rekomendasi yang berkinerja lebih baik daripada algoritmanya sendiri dengan hadiah dari 1 juta dolar untuk menang.
 
 ## Business Understanding
 
-Sistem rekomendasi buku adalah jenis sistem rekomendasi di mana kita harus merekomendasikan buku sejenis kepada pembaca berdasarkan minatnya. Sistem rekomendasi buku digunakan oleh situs online yang menyediakan ebook seperti google play books, open library, good Read's, dll.
+Sistem rekomendasi buku adalah jenis sistem rekomendasi di mana kita harus merekomendasikan buku sejenis kepada pembaca berdasarkan minatnya. Sistem rekomendasi buku digunakan oleh situs online yang menyediakan ebook seperti google play books, open library, good Read's dan lain-lain.
 
 ### Problem Statements
 Kembangkan sebuah sistem rekomendasi Buku untuk menjawab permasalahan berikut:
 - Berdasarkan data mengenai pengguna, bagaimana membuat sistem rekomendasi yang dipersonalisasi dengan teknik content-based filtering?
-- Dengan data rating yang Anda miliki, bagaimana merekomendasikan buku lain yang mungkin disukai dan belum pernah dikunjungi oleh pengguna? 
+- Dengan data rating yang Anda miliki, bagaimana merekomendasikan buku lain yang mungkin disukai dan belum pernah dibaca oleh pengguna? 
 
 ### Goals
 Untuk  menjawab pertanyaan tersebut, buatlah sistem rekomendasi dengan tujuan atau goals sebagai berikut:
 - Menghasilkan sejumlah rekomendasi Buku yang dipersonalisasi untuk pengguna dengan teknik content-based filtering.
-- Menghasilkan sejumlah rekomendasi Buku yang sesuai dengan preferensi pengguna dan belum pernah dikunjungi sebelumnya dengan teknik collaborative filtering.
+- Menghasilkan sejumlah rekomendasi Buku yang sesuai dengan preferensi pengguna dan belum pernah dibaca sebelumnya dengan teknik collaborative filtering.
 
 **Solution statements**:
 
-Pada latihan kali ini kita akan menggunakan kedua metode yaitu content dan collaborative based filter yaitu :
+Pada latihan kali ini kita akan menggunakan dua metode yaitu content dan collaborative based filter yaitu :
 - Pada Content Based Flter, kita akan menggunakan penulis buku menjadi pusat sebagai pusat dari sistem rekomendasi. 
 Dalam algoritma ini, kami mencoba menemukan item pencarian yang mirip. Misalnya, seseorang suka menonton bidikan Sachin Tendulkar, maka dia mungkin juga suka menonton bidikan Ricky Ponting karena kedua video tersebut memiliki tag dan kategori yang mirip.
 - Pada Collaborative Based Flter, kita akan menggunakan penilaian dari berbagai pengguna sebagai pusat dari sistem rekomendasi. Sistem pemberi rekomendasi penyaringan berbasis kolaboratif didasarkan pada interaksi pengguna dan item target sebelumnya. Dengan kata sederhana di sini, kami mencoba mencari pelanggan yang mirip dan menawarkan produk berdasarkan apa yang mereka pilih.
@@ -42,8 +44,7 @@ Berisi informasi rating buku. Peringkat ( Book-Rating) baik eksplisit, dinyataka
 
 **1. Exploratory Data Analysis**
 
-Pada step ini, lakukanlah analisa sederhana, seperti describe(), info(), dan juga visualisasi agar kita dapatkan suatu insight dari dataset.
-Jumlah dataset buku 271360 baris 8 kolom, dan jumlah dataset rating 1149780 baris 3 kolom. Berdasarkan jumlah data rating dan books terbilang banyak, di sini saya hanya mengambil 10000 baris book dataset dan 5000 baris untuk rating dataset. 
+Jumlah dataset buku 271360 baris 8 kolom, dan jumlah dataset rating 1149780 baris 3 kolom. Berdasarkan jumlah data rating dan books yang terbilang banyak, di sini saya hanya mengambil 10000 baris book dataset dan 5000 baris untuk rating dataset. 
 
 Data Buku
 
@@ -58,7 +59,7 @@ Mengecek informasi pada dataset dengan fungsi info() berikut.
 
 ![image](https://user-images.githubusercontent.com/110407053/192125760-b76667e1-32e5-4821-9614-6b1620ae928d.png)
 
-Berdasarkan informasi buku dataset memiliki 5 kolom dengan tipe ogject.
+Berdasarkan informasi buku dataset memiliki 5 kolom dengan tipe object.
 
 ![image](https://user-images.githubusercontent.com/110407053/192125751-9d8f3903-394b-4be4-b502-0455e1958e0f.png)
 
@@ -78,9 +79,10 @@ Pada gambar diatas menunjukan bahwa buku teratas (top 20) dengan judul The golde
 
 ![image](https://user-images.githubusercontent.com/110407053/192127095-1cf41a45-670c-45f8-8522-7e3346f83a62.png)
 
-Umpan Balik Implisit: Suka dan tidak suka pengguna dicatat dan dicatat berdasarkan tindakannya seperti klik, pencarian, dan pembelian. Mereka ditemukan dalam jumlah besar tetapi umpan balik negatif tidak ditemukan.
-
-Umpan Balik Eksplisit: Pengguna menentukan suka atau tidak sukanya dengan tindakan seperti bereaksi terhadap item atau memberi peringkat. Ini memiliki umpan balik positif dan negatif tetapi jumlahnya lebih sedikit
+Output diatas menunjukkan informasi sebagai berikut :
+- Menghitung jumlah total rating 1116, jumlah rating explisit 485 dan jumlah rating implisit 631
+- Feedback Implisit (rating implisit) adalah Suka dan tidak suka pengguna dicatat dan dicatat berdasarkan tindakannya seperti klik, pencarian, dan pembelian. Mereka ditemukan dalam jumlah besar tetapi umpan balik negatif tidak ditemukan.
+- Feedback Eksplisit (rating implisit) adalah Pengguna menentukan suka atau tidak sukanya dengan tindakan seperti bereaksi terhadap item atau memberi peringkat. Ini memiliki umpan balik positif dan negatif tetapi jumlahnya lebih sedikit
 
 ## Data Preparation
 Pada bagian akan menerapkan beberapa proses antara lain sebagai berikut :
@@ -98,7 +100,7 @@ Selanjutnya, proyek ini hanya akan menggunakan data unik untuk dimasukkan ke dal
 
 **3. konversi data series menjadi list**
 
-Selanjutnya, kita perlu melakukan konversi data series menjadi list. Dalam hal ini, kita menggunakan fungsi tolist() dari library numpy. Implementasikan kode berikut.
+Selanjutnya, kita perlu melakukan konversi data series menjadi list. Dalam hal ini, kita menggunakan fungsi tolist() dari library numpy. 
 
 ![image](https://user-images.githubusercontent.com/110407053/192132320-1f3f074b-9606-42b5-9352-387e4347fb87.png)
 
@@ -111,7 +113,7 @@ Tahap berikutnya, kita akan membuat dictionary untuk menentukan pasangan key-val
 
 ## Modeling
 
-Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Kini, saatnya mengembangkan sistem rekomendasi dengan pendekatan content based filtering dan collaborative filtering.
+Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan dengan mengembangkan sistem rekomendasi dengan pendekatan content based filtering dan collaborative filtering.
 
 #### 1. Model Development dengan Content Based Filtering
 
@@ -119,8 +121,7 @@ Ide dari sistem rekomendasi berbasis konten (content-based filtering) adalah mer
 
 ###### TF-IDF Vectorizer
 
-TF-IDF adalah singkatan dari Term Frequency Inverse Document Frequency. Ini adalah algoritma yang sangat umum untuk mengubah teks menjadi representasi angka yang bermakna yang digunakan untuk menyesuaikan algoritma mesin untuk prediksi![[2]](TF-IDF Vectorizer scikit-learn
-TF-IDF Vectorizer scikit-learn. (2021). Retrieved 25 September 2022, from https://medium.com/@cmukesh8688/tf-idf-vectorizer-scikit-learn-dbc0244a911a)
+TF-IDF adalah singkatan dari Term Frequency Inverse Document Frequency. Ini adalah algoritma yang sangat umum untuk mengubah teks menjadi representasi angka yang bermakna yang digunakan untuk menyesuaikan algoritma mesin untuk prediksi[[2](https://medium.com/@cmukesh8688/tf-idf-vectorizer-scikit-learn-dbc0244a911a)].
 Pada tahap ini, kita akan membangun sistem rekomendasi judul buku berdasarkan penulisnya. TfidfVectorizer dapat menangani nama-nama penulis seberapa sering mereka muncul dalam dokumen. 
 
 ![image](https://user-images.githubusercontent.com/110407053/192132335-1b2a50b4-b28f-4dca-83b0-f106a2a81e2b.png)
@@ -136,7 +137,7 @@ Selanjutnya, mari kita lihat matriks tf-idf untuk beberapa judul buku dengan pen
 
 ###### Cosine Similarity
 
-Cosine Similarity mengukur kesamaan antara dua vektor ruang hasil kali dalam. Ini diukur dengan kosinus sudut antara dua vektor dan menentukan apakah dua vektor menunjuk ke arah yang kira-kira sama. ![[3]](https://medium.com/@manturdipa/book-recommender-system-ec8bbaa983a8) kita akan menghitung derajat kesamaan (similarity degree) antar judul buku dengan teknik cosine similarity. Di sini, kita akan menghitung cosine similarity dataframe tfidf_matrix yang kita peroleh pada tahapan sebelumnya. Dengan satu baris kode untuk memanggil fungsi cosine similarity dari library sklearn, kita telah berhasil menghitung kesamaan (similarity) antar judul buku. Menghasilkan keluaran berupa matriks kesamaan dalam bentuk array. 
+Cosine Similarity mengukur kesamaan antara dua vektor ruang hasil kali dalam. Ini diukur dengan kosinus sudut antara dua vektor dan menentukan apakah dua vektor menunjuk ke arah yang kira-kira sama. [[3](https://medium.com/@manturdipa/book-recommender-system-ec8bbaa983a8)] kita akan menghitung derajat kesamaan (similarity degree) antar judul buku dengan teknik cosine similarity. Di sini, kita akan menghitung cosine similarity dataframe tfidf_matrix yang kita peroleh pada tahapan sebelumnya. Dengan satu baris kode untuk memanggil fungsi cosine similarity dari library sklearn, kita telah berhasil menghitung kesamaan (similarity) antar judul buku. Menghasilkan keluaran berupa matriks kesamaan dalam bentuk array. 
 
 ![image](https://user-images.githubusercontent.com/110407053/192132374-272e6936-5c5a-477f-98ca-e6ced898481a.png)
 
@@ -153,21 +154,17 @@ Untuk mendaptkan rekomendasi, kita membuat fungsi author_recommendations dengan 
 *  items : nama dan fitur yang digunakan untuk mendefinisikan kemiripan, dalam hal ini adalah 'book_title'  dan 'book_author'
 *  k : banyak rekomendasi yang ingin diberikan
 
-Dengan menggunakan argpartition, kita mengambil sejumlah nilai k tertinggi dari similarity data (dalam kasus ini: dataframe cosine_sim_df). Kemudian, kita mengambil data dari bobot (tingkat kesamaan) tertinggi ke terendah. Data ini dimasukkan ke dalam variabel closest. Berikutnya, kita perlu menghapus book_title' yang dicari agar tidak muncul dalam daftar rekomendasi. Dalam kasus ini, nanti kita akan mencari nama penulis dari judul buku "Un Giorno Dopo L'altro" yang telah di baca, selain nama nanti akan keluar informasi ISBN, judul buku lain yang mirip , dan  tahun publikasi. Oleh karena itu, perlu drop terlebih dahulu 'book_title', 'book_author' agar tidak muncul dalam daftar rekomendasi yang diberikan nanti.  
+Dengan menggunakan argpartition, kita mengambil sejumlah nilai k tertinggi dari similarity data (dalam kasus ini: dataframe cosine_sim_df). Kemudian, kita mengambil data dari bobot (tingkat kesamaan) tertinggi ke terendah. Data ini dimasukkan ke dalam variabel closest. Berikutnya, kita perlu menghapus book_title' yang dicari agar tidak muncul dalam daftar rekomendasi. Dalam kasus ini, nanti kita akan mencari nama penulis dari judul buku "The Diaries of Adam and Eve" yang telah di baca, selain nama nanti akan keluar informasi ISBN, judul buku lain yang mirip , dan  tahun publikasi. Oleh karena itu, perlu drop terlebih dahulu 'book_title', 'book_author' agar tidak muncul dalam daftar rekomendasi yang diberikan nanti.  Buku "The Diaries of Adam and Eve" penulisnya adalah Mark Twain. Tentu kita berharap rekomendasi yang diberikan adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
 
-![image](https://user-images.githubusercontent.com/110407053/192132396-b63527c3-ced0-4170-90db-ccde4792dd28.png)
+![image](![image](https://user-images.githubusercontent.com/110407053/192181265-d83d5cd9-f413-443a-b424-9f5d81bb1e66.png))
 
-Perhatikanlah, judul buku "Un Giorno Dopo L'altro" penulisnya adalah Carlo Lucarelli. Tentu kita berharap rekomendasi yang diberikan adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
-
-![image](https://user-images.githubusercontent.com/110407053/192132404-7d00533e-2705-41bd-914d-148f4a8f4b81.png)
-
-
+Berdasarkan output di atas ada 5 buku yaitu yang direkomendasikan sesuai dengan rekomendasi yang di minta sebelumnya.
 
 #### 2. Model Development dengan Collaborative Filtering
 
 Collaborative filtering bergantung pada pendapat komunitas pengguna. Ia tidak memerlukan atribut untuk setiap itemnya seperti pada sistem berbasis konten. Pada materi ini, kita akan menerapkan teknik collaborative filtering untuk membuat sistem rekomendasi. Teknik ini membutuhkan data rating dari user. 
 
-Goal proyek kita kali ini adalah menghasilkan rekomendasi sejumlah restoran yang sesuai dengan preferensi pengguna berdasarkan rating yang telah diberikan sebelumnya. Dari data rating pengguna, kita akan mengidentifikasi restoran-restoran yang mirip dan belum pernah dikunjungi oleh pengguna untuk direkomendasikan. Kita akan menggunakan teknik collaborative filtering untuk membuat rekomendasi ini. 
+Goal proyek kita kali ini adalah menghasilkan rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna berdasarkan rating yang telah diberikan sebelumnya. Dari data rating pengguna, kita akan mengidentifikasi buku-buku yang mirip dan belum pernah dibaca oleh pengguna untuk direkomendasikan. Kita akan menggunakan teknik collaborative filtering untuk membuat rekomendasi ini. 
 
 ###### Data Preparation
 Selanjutnya, pahami terlebih dahulu data rating yang kita miliki. Load data di awal dan membaca file ratings.csv. Selanjutnya  melakukan persiapan data untuk menyandikan (encode) fitur ‘user’ dan ‘user_id’ ke dalam indeks integer. Berikut adalah sebagian output-nya:
@@ -209,7 +206,7 @@ Di sini, kita membuat class RecommenderNet dengan keras Model class. Kode class 
 
 #### 1. Evaluation Model Development dengan Collaborative Filtering
 
-Evaluasi dilakukan untuk mengetahui peforma akurasi dan error yang terjadi. RMSE Melihat perbedaan antara peringkat yang diprediksi oleh sistem pemberi rekomendasi dan peringkat aktual yang diberikan oleh pengguna. RMSE yang rendah menunjukkan bahwa sistem pemberi rekomendasi mampu memprediksi peringkat pengguna secara akurat.k. Saya menggunakan metode evaluasi RMSE. Root Mean Square Error (RMSE) adalah jumlah dari kesalahan kuadrat atau selisih antara nilai sebenarnya dengan nilai prediksi yang telah ditentukan.  Rumus formula RMSE adalah sebagai berikut : 
+Evaluasi dilakukan untuk mengetahui peforma akurasi dan error yang terjadi. RMSE Melihat perbedaan antara peringkat yang diprediksi oleh sistem pemberi rekomendasi dan peringkat aktual yang diberikan oleh pengguna. RMSE yang rendah menunjukkan bahwa sistem pemberi rekomendasi mampu memprediksi peringkat pengguna secara akurat[[4](https://medium.com/analytics-vidhya/loss-functions-to-evaluate-regression-models-8dac47e327e2)]. Saya menggunakan metode evaluasi RMSE untuk mencari jumlah dari kesalahan kuadrat atau selisih antara nilai sebenarnya dengan nilai prediksi yang telah ditentukan.  Rumus formula RMSE adalah sebagai berikut : 
 
 ![image](https://user-images.githubusercontent.com/110407053/192153091-af28de1e-434f-4c23-be7d-c33068bc7dfd.png)
 
@@ -238,20 +235,27 @@ Girl in Hyacinth Blue : Susan Vreeland
 
 Prediksi yang dihasilkan cukup sesuai. Sampai di tahap ini, Anda telah berhasil membuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan Collaborative Filtering. Sistem rekomendasi yang Anda buat telah berhasil memberikan sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna. 
 
-
 #### 2. Evaluation Model Development dengan Content Based Filtering
 
-Matik evaluasi untuk model berbasis konten dengan menghitung akurasi yang diperoleh dengan menghitung jumlah buku yang di rekomendasikan sesuai dengan penulis/jumlah buku yang ditulis oleh penulis yang sama. 
+Matik evaluasi untuk model berbasis konten dengan menghitung jumlah buku yang di rekomendasikan sesuai dengan penulis/jumlah buku yang ditulis oleh penulis yang sama. 
 
 ![image](https://user-images.githubusercontent.com/110407053/192157742-71e61641-92b3-4037-b584-3f10ccb81bf2.png)
 
 
-Variabel books_that_have_been_read_row di bawah ini akan mengambil satu row dari buku yang pernah dibaca sebelumnya, dan variabel books_that_have_been_read_author adalah penulis buku dari buku yang pernah dibaca sebelumnya
+- Variabel books_that_have_been_read_row di bawah ini akan mengambil satu row dari buku yang pernah dibaca sebelumnya, dan 
+- variabel books_that_have_been_read_author adalah penulis buku dari buku yang pernah dibaca sebelumnya
+- Variabel books_with_the_same_author menunjukkan jumlah buku yang sudah ditulis oleh penulis buku yang berasal dari buku yang pernah dibaca sebelumnya
+- Ternyata buku yang telah ditulis oleh Mark Twain berjumlah 16 buku. Jadi jumlah akurasi dari model adalah 31, 25 %
 
-Variabel books_with_the_same_author menunjukkan jumlah buku yang sudah ditulis oleh penulis buku yang berasal dari buku yang pernah dibaca sebelumnya
-Ternyata buku yang telah ditulis oleh Mark Twain berjumlah 16 buku, oleh karena itu
+Sampai di tahap ini, proyek ini telah berhasil membuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan Collaborative Filtering. Sistem rekomendasi yang telah dibuat berhasil memberikan sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna. 
 
 ## REFERENCES
 
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+[[1](https://aclanthology.org/C18-1033.pdf)] Haifa , . I. Diana and S. Stan , "Authorship Identification for Literary Book Recommendations," Proceedings of the 27th International Conference on Computational Linguistics, p. 390–400, 2018.
+
+[[2](https://medium.com/@cmukesh8688/tf-idf-vectorizer-scikit-learn-dbc0244a911a)] Chaudhary, "TF-IDF Vectorizer scikit-learn," 2020. [Online]. Available: https://medium.com/@cmukesh8688/tf-idf-vectorizer-scikit-learn-dbc0244a911a.
+
+[[3](https://medium.com/@manturdipa/book-recommender-system-ec8bbaa983a8.)] Mantur, "Book Recommender System," Juny 2021. [Online]. Available: https://medium.com/@manturdipa/book-recommender-system-ec8bbaa983a8.
+
+[[4](https://medium.com/analytics-vidhya/loss-functions-to-evaluate-regression-models-8dac47e327e2)]P. Muniraj, "Loss functions to evaluate Regression Models," 18 December 2021. [Online]. Available: Loss functions to evaluate Regression Models.
+
