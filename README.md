@@ -117,6 +117,7 @@ Pada bagian akan menerapkan beberapa proses antara lain sebagai berikut :
 Selanjutnya, mari kita cek lagi datanya apakah ada missing value atau tidak. Karena datanya terdiri dari ratusan bahkan ribuan baris tentu akan susah dalam menemukan nilai field yang kosong. Oleh karena itu, Pandas memungkinkan kita dapat menemukan missing value secara cepat dengan fungsi isna() dan sum(). Fungsi isna() untuk mengidentifikasi nilai yang hilang, dan fungsi sum() untuk menghitungnya.
 
 ![image](https://user-images.githubusercontent.com/110407053/192125779-5fc21f42-fb35-4c25-b230-6073a0e7f376.png)
+
 ![image](https://user-images.githubusercontent.com/110407053/192125783-9d2f91d7-1a63-478e-ab9f-99f9a2de779e.png)
 
 Data buku dan rating tidak memiliki _missing value_ sehingga bisa diteruskan untuk proses selanjutnya.
@@ -142,11 +143,7 @@ Selanjutnya, kita perlu melakukan konversi data series menjadi list (daftar). Da
 Tahap berikutnya, kita akan membuat dictionary untuk menentukan pasangan key-value pada data book_ISBN, book_author, book_title dan book_year_of_publication yang telah kita siapkan sebelumnya.
 
 ###### Encode user_id
-Proses ini dilakukan pada metode _collaborative filtering_ dengan persiapan data untuk menyandikan (encode) fitur ‘user’ dan ‘user_id’ ke dalam indeks integer. Berikut adalah sebagian output-nya:
-
-![image](https://user-images.githubusercontent.com/110407053/192146267-18984e31-c03e-43bf-aac9-de677386e87f.png)
-
-Selanjutnya, lakukan hal yang sama pada fitur ‘ISBN’. Terakhir petakan ISBN dan user_id ke dataframe yang berkaitan. Output jumlah user, jumlah BUKU, dan mengubah nilai rating menjadi float.
+Proses ini dilakukan pada metode _collaborative filtering_ dengan persiapan data untuk menyandikan (encode) fitur ‘user’ dan ‘user_id’ ke dalam indeks integer. Selanjutnya, lakukan hal yang sama pada fitur ‘ISBN’. Terakhir petakan ISBN dan user_id ke dataframe yang berkaitan. Output jumlah user, jumlah BUKU, dan mengubah nilai rating menjadi float.
 
 ![image](https://user-images.githubusercontent.com/110407053/192146479-cf897f6b-6c1a-4235-96e3-0cfbff2692e2.png)
 
@@ -170,12 +167,7 @@ Ide dari sistem rekomendasi berbasis konten (content-based filtering) adalah mer
 ###### TF-IDF Vectorizer
 
 TF-IDF adalah singkatan dari Term Frequency Inverse Document Frequency. Ini adalah algoritma yang sangat umum untuk mengubah teks menjadi representasi angka yang bermakna yang digunakan untuk menyesuaikan algoritma mesin untuk prediksi[[2](https://medium.com/@cmukesh8688/tf-idf-vectorizer-scikit-learn-dbc0244a911a)].
-Pada tahap ini, kita akan membangun sistem rekomendasi judul buku berdasarkan penulisnya. TfidfVectorizer dapat menangani nama-nama penulis seberapa sering mereka muncul dalam dokumen. 
-
-![image](https://user-images.githubusercontent.com/110407053/192132335-1b2a50b4-b28f-4dca-83b0-f106a2a81e2b.png)
-
-
-Selanjutnya, lakukan fit dan transformasi ke dalam bentuk matriks. 
+Pada tahap ini, kita akan membangun sistem rekomendasi judul buku berdasarkan penulisnya. TfidfVectorizer dapat menangani nama-nama penulis seberapa sering mereka muncul dalam dokumen. Selanjutnya, lakukan fit dan transformasi ke dalam bentuk matriks. 
 
 Perhatikanlah, matriks yang kita miliki berukuran (10000, 5575). Nilai 10000 merupakan ukuran data dan 5575 merupakan nama penulis. Selanjutnya ubah tfid menjadi matriks dengan fungsi todense(). Sampai di sini, telah berhasil mengidentifikasi representasi fitur penting dari setiap judul buku dengan fungsi tfidfvectorizer. Kita juga telah menghasilkan matriks yang menunjukkan korelasi antara judul buku dengan penulis. Selanjutnya, kita akan menghitung derajat kesamaan antara satu buku dengan penulis lainnya untuk menghasilkan kandidat penulis yang akan direkomendasikan.
 
@@ -191,6 +183,7 @@ Dengan cosine similarity, kita berhasil mengidentifikasi kesamaan antara satu bu
 |---------|----------|-----------|------------------------|
 |0965881199|The Diaries of Adam and Eve|Mark Twain|1998|
 
+Tabel 1 
 ###### Mendapatkan Rekomendasi
  
 Sebelum melakukan rekomendasi, kita membuat fungsi author_recommendations dengan be berapa parameter sebagai berikut: 
@@ -210,7 +203,8 @@ Oleh karena itu, perlu drop terlebih dahulu 'book_title', 'book_author' agar tid
 |The Complete Short Stories of Mark Twain|Mark Twain|
 |Treasury of Illustrated Classics: Adventures|Mark Twain|
 |A Connecticut Yankee in King Arthur's Court|Mark Twain|
- 
+
+Tabel 2
 Berdasarkan output di atas sistem merekomendasikan top 5 buku dengan judul buku "The Di aries of Adam and Eve" penulisnya adalah Mark Twain yang direkomendasikan sesuai den gan rekomendasi yang di minta sebelumnya.
  
 #### 2. Model Development dengan Collaborative Filtering
@@ -257,6 +251,8 @@ D engan mengggunakan matriks RMSE output dari modelnya adalah sebagai berikut.
  
 ![image](https://user-images.githubusercontent.com/110407053/192476092-abf9dc5d-5b3a-4360-b871-dabfe204eab1.png)
 
+Gambar 4. Visualisasi Matrik 
+
 Perhatikanlah, proses training model cukup baik dan model konvergen pada epochs se kitar 20. Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.22 dan  error pada data validasi sebesar 0.34. Nilai RMSE rendah menunjukkan bahwa variasi  nilai yang dihasilkan oleh suatu model prakiraan mendekati variasi nilai  obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai. Semakin kecil  nilai RMSE, semakin dekat nilai yang diprediksi dan diamati. Nilai tersebut cukup  bagus untuk sistem rekomendasi. Mencoba merekomendasi buku untuk menghasilkan  rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna berdasarkan rating  yang telah diberikan sebelumnya.
  
 ![image](https://user-images.githubusercontent.com/110407053/192476731-688d534d-00b5-4d37-adfa-3989422dc279.png)
@@ -279,6 +275,8 @@ Pada proyek ini kita akan mencari rekomendai nama penulis dari judul buku "The D
 |---------|----------|-----------|------------------------|
 |0965881199|The Diaries of Adam and Eve|Mark Twain|1998|
 
+Tabel 3.
+
 Dari hasil rekomendasi di atas, diketahui buku "The Diaries of Adam and Eve" penulisnya adalah Mark Twain. Tentu kita berharap rekomendasi yang diberikan adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
 
 |book_title|book_author|
@@ -288,6 +286,8 @@ Dari hasil rekomendasi di atas, diketahui buku "The Diaries of Adam and Eve" pen
 |The Complete Short Stories of Mark Twain|Mark Twain|
 |Treasury of Illustrated Classics: Adventures|Mark Twain|
 |A Connecticut Yankee in King Arthur's Court|Mark Twain|
+
+Tabel 4.
 
 Semua item yang direkomendasikan memiliki penulis yang sama yaitu Mark Twain (similar). Artinya, precision sistem kita sebesar 5/5 atau 100%.
 atau dapat ditulis 
