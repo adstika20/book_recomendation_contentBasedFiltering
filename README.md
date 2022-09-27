@@ -307,7 +307,7 @@ Prediksi yang dihasilkan cukup sesuai. Sampai di tahap ini, Anda telah berhasil 
 Matrik evaluasi dalam sistem rekomendasi metode Content Based Filtering menggunakan precision. Precision adalah jumlah item rekomendasi yang relevan.
 Rumus precision
 
-![image](https://user-images.githubusercontent.com/110407053/192476856-f0e90012-bbf9-48fd-ad8e-5ef8bfd4d0b2.png)
+_recommender system precission (P)=  recommendations that are relevant / of items we recommended_
 
 Contoh cara kerja precision sistem memberi 5 item untuk direkomendasikan pada pengguna. Kemudian, dari 5 item itu, ada 3 yang relevan. Maka presisinya jadi 60%. 
 Pada proyek ini kita akan mencari rekomendai nama penulis dari judul buku "The Diaries of Adam and Eve" yang telah di baca. 
