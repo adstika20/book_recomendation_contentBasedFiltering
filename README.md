@@ -75,9 +75,9 @@ Data Buku
 |0374157065|Flu: The Story of the Great Influenza Pandemic|Gina Bari Kolata|1999|Farrar Straus Giroux|http://images.amazon.com/images/P/0374157065.0|	http://images.amazon.com/images/P/0374157065.0|http://images.amazon.com/images/P/0374157065.0|
 |0393045218|The Mummies of Urumchi|E. J. W. Barber|1999|W. W. Norton &amp; Company|http://images.amazon.com/images/P/0393045218.0|http://images.amazon.com/images/P/0393045218.0|http://images.amazon.com/images/P/0393045218.0|
 
-Gambar 1. Data Buku
+Tabel 1. Data Buku
 
-Gambar 1 menampilkan data-data yang terdapat pada dataset buku.
+Tabel 1 menampilkan data-data yang terdapat pada dataset buku.
 
 Data Rating
 
@@ -89,9 +89,9 @@ Data Rating
 |276729|052165615X|3|
 |276729	|0521795028|6|
 
-Gambar 2. Data Rating
+Tabel 2. Data Rating
 	
-Gambar 2 menampilkan user_id, ISBN buku dan jumlah rating pada buku.
+Tabel 2 menampilkan user_id, ISBN buku dan jumlah rating pada buku.
 
 Mengecek informasi pada dataset buku dengan fungsi info() berikut.
 
@@ -109,7 +109,7 @@ Data columns (total 8 columns):
  |6|   Image-URL-M |        10000 non-null | object |
  |7|   Image-URL-L |          10000 non-null | object |
  
- Gambar 3. Info Buku
+ Tabel 3. Info Buku
  
 dtypes: object(8)
 memory usage: 625.1+ KB
@@ -127,7 +127,7 @@ Data columns (total 3 columns):
  |1|   ISBN |        5000 non-null |  object|
  |2|   Book-Rating | 5000 non-null |  int64 |
  
- Gambar 4. Info Rating
+ Tabel 4. Info Rating
  
 dtypes: int64(2), object(1)
 memory usage: 117.3+ KB
@@ -140,19 +140,19 @@ Selanjutnya kita perlu menamai ulang kolom-kolom dari setiap file karena nama ko
 
 ![image](https://user-images.githubusercontent.com/110407053/192126113-b68c29d5-a43b-4ebf-8955-fbd4c07fe058.png)
 
-Gambar 5. Top Author
+Gambar 1. Top Author
 
 Top 50 author menggunakan px.bar, setiap baris DataFrame direpresentasikan sebagai tanda persegi panjang dapat dilihat pada Gambar 1. Gambar 1 menunjukan bahwa kategori penulis (top 50) terbanyak adalah stephen king dengan jumlah 70 buku 
 
 ![image](https://user-images.githubusercontent.com/110407053/192127390-b82f6f39-0f43-4502-8da7-6ca5a84a8dd9.png)
 
-Gambar 6. Top Book
+Gambar 2. Top Book
 
 Top 20 book menggunakan px.bar, setiap baris DataFrame direpresentasikan sebagai tanda persegi panjang dapat dilihat pada Gambar 2. Gambar 2 menunjukan bahwa buku teratas (top 20) diraih dengan judul The golden compass dengan jumlah 4 buku. 
 
 ![image](https://user-images.githubusercontent.com/110407053/192127095-1cf41a45-670c-45f8-8522-7e3346f83a62.png)
 
-Gambar 7. Rating distribution
+Gambar 3. Rating distribution
 
 Distribusi rating menggunakan Bart chart dapat dilihat pada Gambar 3. Pada Gambar 3, sebagian besar pengguna memberi rating 8 sejumlah lebih dari 120, ada beberapa informasi lain seperti :
 - Menghitung jumlah total rating 1116, jumlah rating explisit 485 dan jumlah rating implisit 631
@@ -170,7 +170,9 @@ Selanjutnya, mari kita cek lagi datanya apakah ada missing value atau tidak. Kar
 
 ![image](https://user-images.githubusercontent.com/110407053/192125783-9d2f91d7-1a63-478e-ab9f-99f9a2de779e.png)
 
-Data buku dan rating tidak memiliki _missing value_ sehingga bisa diteruskan untuk proses selanjutnya.
+Gambar 4. Missing value dataset buku dan rating 
+
+Pada Gambar 4 data buku dan rating tidak memiliki _missing value_ sehingga bisa diteruskan untuk proses selanjutnya.
 
 **2. Melihat jumlah data buku rate 10**
 
@@ -193,11 +195,11 @@ Proses ini dilakukan pada metode _collaborative filtering_ dengan persiapan data
 |--------------|--------------|----------|----------|
 |679|4688|0.0|10.0|
 
-Tabel 1. Encode user_id
+Tabel 5. Encode user_id
 
 Tahap persiapan telah selesai. Berikut adalah hal-hal yang telah kita lakukan pada tahap ini:
 
-- Tabel 1 menghitung jumlah user, nomor buku, dan jumlah min rating dan max rating
+- Tabel 5 menghitung jumlah user, nomor buku, dan jumlah min rating dan max rating
 - Memahami data rating yang kita miliki.
 - Menyandikan (encode) fitur ‘user_id’ dan ‘ISBN’ ke dalam indeks integer. 
 - Memetakan ‘user_id’ dan ‘ISBN’ ke dataframe yang berkaitan.
@@ -238,9 +240,9 @@ Dengan menggunakan argpartition, kita mengambil sejumlah nilai k tertinggi dari 
 |---------|----------|-----------|------------------------|
 |0965881199|The Diaries of Adam and Eve|Mark Twain|1998|
 
-Tabel 2. Rekomendasi Buku metode Content Based Filtering
+Tabel 6. Rekomendasi Buku metode Content Based Filtering
 
-Tabel 2 menginformasikan rekomendasi Buku "The Diaries of Adam and  Eve" ditulis oleh penulis bernama Mark Twain, ISBN 0965881199 dan dipublikasi tahun 1998.
+Tabel 6 menginformasikan rekomendasi Buku "The Diaries of Adam and  Eve" ditulis oleh penulis bernama Mark Twain, ISBN 0965881199 dan dipublikasi tahun 1998.
 Tentu kita berharap rekomendasi yang diberikan  adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku  recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
  
 |book_title|book_author|
@@ -251,9 +253,9 @@ Tentu kita berharap rekomendasi yang diberikan  adalah judul buku dengan kategor
 |Treasury of Illustrated Classics: Adventures|Mark Twain|
 |A Connecticut Yankee in King Arthur's Court|Mark Twain|
 
-Tabel 3. Top 5 Recommendation Content Based Filtering
+Tabel 7. Top 5 Recommendation Content Based Filtering
 
-Berdasarkan Tabel 3 di atas sistem merekomendasikan top 5 buku dengan judul buku "The Di aries of Adam and Eve" dengan penulis yang sama yaitu Mark Twain yang direkomendasikan sesuai dengan rekomendasi yang di minta sebelumnya.
+Berdasarkan Tabel 7 di atas sistem merekomendasikan top 5 buku dengan judul buku "The Di aries of Adam and Eve" dengan penulis yang sama yaitu Mark Twain yang direkomendasikan sesuai dengan rekomendasi yang di minta sebelumnya.
  
 #### 2. Model Development dengan Collaborative Filtering
  
@@ -289,9 +291,9 @@ Setelah dilakukan proses compile dan train model maka saatnya mendapatkan rekome
 |Ordinary People : Judith Guest|
 |Four Past Midnight : Stephen King|
 
-Tabel 4. Rekomendasi buku dengan teknik Collaborative Filtering
+Tabel 8. Rekomendasi buku dengan teknik Collaborative Filtering
 
-Tabel 4 di atas kita telah berhasil memberikan rekomendasi kepada user 277235. dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
+Tabel 8 di atas kita telah berhasil memberikan rekomendasi kepada user 277235. dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
  
 ## Evaluation
  
@@ -301,15 +303,17 @@ Evaluasi dilakukan untuk mengetahui peforma akurasi dan error yang terjadi. RMSE
 
 ![image](https://user-images.githubusercontent.com/110407053/192476524-3352009a-cc22-4a6b-bb98-817058df7b9f.png)
 
+Gambar 5. Rumus RMSE
+
 Y  ' = Nilai Prediksi 
 Y    = Nilai Sejati
 n     = Jumlah Data
  
 ![image](https://user-images.githubusercontent.com/110407053/192476092-abf9dc5d-5b3a-4360-b871-dabfe204eab1.png)
 
-Gambar 4. Visualisasi Matrik 
+Gambar 6. Visualisasi Matrik 
 
-Perhatikanlah hasil training model pada gambar 4, proses training model cukup baik dan model konvergen pada epochs se kitar 20. Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.22% dan  error pada data validasi sebesar 0.34%. Nilai RMSE rendah menunjukkan bahwa variasi  nilai yang dihasilkan oleh suatu model prakiraan mendekati variasi nilai  obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai. Semakin kecil  nilai RMSE, semakin dekat nilai yang diprediksi dan diamati. Nilai tersebut cukup  bagus untuk sistem rekomendasi. Untuk memudahkan dalam memahami hasil training dapat dilihat pada gambar 5 visualisasi model metric.
+Perhatikanlah hasil training model pada gambar 6, proses training model cukup baik dan model konvergen pada epochs se kitar 20. Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.22% dan  error pada data validasi sebesar 0.34%. Nilai RMSE rendah menunjukkan bahwa variasi  nilai yang dihasilkan oleh suatu model prakiraan mendekati variasi nilai  obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai. Semakin kecil  nilai RMSE, semakin dekat nilai yang diprediksi dan diamati. Nilai tersebut cukup  bagus untuk sistem rekomendasi. Untuk memudahkan dalam memahami hasil training dapat dilihat pada gambar 5 visualisasi model metric.
 
 Seperti yang telah dijelaskan di tahap pemodelan menggunakan Collaborative Filtering, mari kita mencoba kembali merekomendasi buku yang sesuai dengan preferensi pengguna berdasarkan rating  yang telah diberikan sebelumnya.
 
@@ -327,8 +331,9 @@ Seperti yang telah dijelaskan di tahap pemodelan menggunakan Collaborative Filte
 |Ordinary People : Judith Guest|
 |Four Past Midnight : Stephen King|
 
+Tabel 9. Top 10 book Recommendation
  
-Pada output di atas kita telah berhasil memberikan rekomendasi kepada user 277235. dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
+Tabel 9 di atas kita telah berhasil memberikan rekomendasi kepada user 277235. dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
  
 Prediksi yang dihasilkan cukup sesuai. Sampai di tahap ini, Anda telah berhasil me mbuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan  Collaborative Filtering. Sistem rekomendasi yang Anda buat telah berhasil memberikan  sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna. 
  
@@ -346,9 +351,9 @@ Pada proyek ini kita akan mencari rekomendai nama penulis dari judul buku "The D
 |---------|----------|-----------|------------------------|
 |0965881199|The Diaries of Adam and Eve|Mark Twain|1998|
 
-Tabel 3. Rekomendasi buku dengan teknik Content Based Filtering
+Tabel 10. Rekomendasi buku dengan teknik Content Based Filtering
 
-Dari hasil rekomendasi di atas, diketahui buku "The Diaries of Adam and Eve" penulisnya adalah Mark Twain. Tentu kita berharap rekomendasi yang diberikan adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
+Dari hasil rekomendasi Tabel 10, diketahui buku "The Diaries of Adam and Eve" penulisnya adalah Mark Twain. Tentu kita berharap rekomendasi yang diberikan adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
 
 |book_title|book_author|
 |----------|-----------|
@@ -358,7 +363,7 @@ Dari hasil rekomendasi di atas, diketahui buku "The Diaries of Adam and Eve" pen
 |Treasury of Illustrated Classics: Adventures|Mark Twain|
 |A Connecticut Yankee in King Arthur's Court|Mark Twain|
 
-Tabel 5. Rekomendasi buku top 5 dengan teknik Content Based Filtering
+Tabel 11. Rekomendasi buku top 5 dengan teknik Content Based Filtering
 
 Semua item yang direkomendasikan memiliki penulis yang sama yaitu Mark Twain (similar). Artinya, precision sistem kita sebesar 5/5 atau 100%.
 atau dapat ditulis 
