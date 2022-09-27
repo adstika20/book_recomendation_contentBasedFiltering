@@ -60,7 +60,7 @@ Pada file rating terdapat beberapa variabel-variabel yaitu :
 
 Kemudian jumlah dataset buku ada 271360 baris 8 kolom, dan jumlah dataset rating ada 1149780 baris 3 kolom. Berdasarkan jumlah data rating dan books yang terbilang banyak, di sini saya hanya mengambil 10000 baris book dataset dan 5000 baris untuk rating dataset. Setelah memahami variabel setiap data kemudian ada beberapa proses lain yaitu :
 
-#### 1. melihat dataset
+#### 1. Melihat dataset
 
 Melihat book dataset dan rating dataset menggunakan fungsi head().
 
@@ -80,31 +80,33 @@ Mengecek informasi pada dataset dengan fungsi info() berikut.
 
 ![image](https://user-images.githubusercontent.com/110407053/192125760-b76667e1-32e5-4821-9614-6b1620ae928d.png)
 
-Berdasarkan informasi buku dataset memiliki 5 kolom dengan tipe object.
+Berdasarkan informasi buku dataset memiliki 5 kolom dengan tipe object yaitu ISBN, title, author, year_of_publication dan publisher.
 
 ![image](https://user-images.githubusercontent.com/110407053/192125751-9d8f3903-394b-4be4-b502-0455e1958e0f.png)
 
 Berdasarkan informasi rating dataset memiliki 2 kolom dengan tipe int64 yaitu user_id, rating dan 1 bertipe object yaitu ISBN
 
-Selanjutnya kita perlu menamai ulang kolom-kolom dari setiap file karena nama kolom tersebut berisi spasi, dan huruf kapital sehingga perlu diperbaiki agar mudah digunakan. Semua nama kolom pada dataset buku dan dataset rating di ubah menggunakan fungsi rename(). 
-Selain itu, ada dataset buku ada beberapa kolom yang di hapus dengan fungsi drop() karena tidak diperlukan untuk proyek ini seperti kolom Image-URL-S,Image-URL-M,Image-URL-L. 
+Selanjutnya kita perlu menamai ulang kolom-kolom dari setiap file karena nama kolom tersebut berisi spasi, dan huruf kapital sehingga perlu diperbaiki agar mudah digunakan. Semua nama kolom pada dataset buku dan dataset rating di ubah menggunakan fungsi rename(). Selain itu, pada dataset buku ada beberapa kolom yang di hapus dengan fungsi drop() karena tidak diperlukan untuk proyek ini seperti kolom Image-URL-S,Image-URL-M,Image-URL-L. 
 
 #### 2. Visualisasi data buku dan rating
 
 ![image](https://user-images.githubusercontent.com/110407053/192126113-b68c29d5-a43b-4ebf-8955-fbd4c07fe058.png)
+
 Gambar 1. Top Author
 
-Pada gambar 1 diatas menunjukan bahwa kategori penulis (top 50) terbanyak adalah stephen king dengan total 70 buku 
+Top 50 author menggunakan px.bar, setiap baris DataFrame direpresentasikan sebagai tanda persegi panjang dapat dilihat pada Gambar 1. Gambar 1 menunjukan bahwa kategori penulis (top 50) terbanyak adalah stephen king dengan jumlah 70 buku 
 
 ![image](https://user-images.githubusercontent.com/110407053/192127390-b82f6f39-0f43-4502-8da7-6ca5a84a8dd9.png)
+
 Gambar 2. Top Book
 
-Pada gambar 2 diatas menunjukan bahwa buku teratas (top 20) dengan judul The golden compass dengan jumlah 4 buku 
+Top 20 book menggunakan px.bar, setiap baris DataFrame direpresentasikan sebagai tanda persegi panjang dapat dilihat pada Gambar 2. Gambar 2 menunjukan bahwa buku teratas (top 20) diraih dengan judul The golden compass dengan jumlah 4 buku. 
 
 ![image](https://user-images.githubusercontent.com/110407053/192127095-1cf41a45-670c-45f8-8522-7e3346f83a62.png)
+
 Gambar 3. Rating distribution
 
-Output diatas menunjukkan informasi sebagai berikut :
+Distribusi rating menggunakan Bart chart dapat dilihat pada Gambar 3. Pada Gambar 3, sebagian besar pengguna memberi rating 8 sejumlah lebih dari 120, ada beberapa informasi lain seperti :
 - Menghitung jumlah total rating 1116, jumlah rating explisit 485 dan jumlah rating implisit 631
 - _Feedback Implisit_ (rating implisit) adalah Suka dan tidak suka pengguna dicatat dan dicatat berdasarkan tindakannya seperti klik, pencarian, dan pembelian. Mereka ditemukan dalam jumlah besar tetapi umpan balik negatif tidak ditemukan.
 - _Feedback Eksplisit_ (rating implisit) adalah Pengguna menentukan suka atau tidak sukanya dengan tindakan seperti bereaksi terhadap item atau memberi peringkat. Ini memiliki umpan balik positif dan negatif tetapi jumlahnya lebih sedikit
@@ -167,9 +169,7 @@ Ide dari sistem rekomendasi berbasis konten (content-based filtering) adalah mer
 ###### TF-IDF Vectorizer
 
 TF-IDF adalah singkatan dari Term Frequency Inverse Document Frequency. Ini adalah algoritma yang sangat umum untuk mengubah teks menjadi representasi angka yang bermakna yang digunakan untuk menyesuaikan algoritma mesin untuk prediksi[[2](https://medium.com/@cmukesh8688/tf-idf-vectorizer-scikit-learn-dbc0244a911a)].
-Pada tahap ini, kita akan membangun sistem rekomendasi judul buku berdasarkan penulisnya. TfidfVectorizer dapat menangani nama-nama penulis seberapa sering mereka muncul dalam dokumen. Selanjutnya, lakukan fit dan transformasi ke dalam bentuk matriks. 
-
-Perhatikanlah, matriks yang kita miliki berukuran (10000, 5575). Nilai 10000 merupakan ukuran data dan 5575 merupakan nama penulis. Selanjutnya ubah tfid menjadi matriks dengan fungsi todense(). Sampai di sini, telah berhasil mengidentifikasi representasi fitur penting dari setiap judul buku dengan fungsi tfidfvectorizer. Kita juga telah menghasilkan matriks yang menunjukkan korelasi antara judul buku dengan penulis. Selanjutnya, kita akan menghitung derajat kesamaan antara satu buku dengan penulis lainnya untuk menghasilkan kandidat penulis yang akan direkomendasikan.
+Pada tahap ini, kita akan membangun sistem rekomendasi judul buku berdasarkan penulisnya. TfidfVectorizer dapat menangani nama-nama penulis seberapa sering mereka muncul dalam dokumen. Selanjutnya, lakukan fit dan transformasi ke dalam bentuk matriks. hasil yang diperoleh adalah matriks yang berukuran (10000, 5575). Nilai 10000 merupakan ukuran data dan 5575 merupakan nama penulis. Selanjutnya ubah tfid menjadi matriks dengan fungsi todense(). Sampai di sini, telah berhasil mengidentifikasi representasi fitur penting dari setiap judul buku dengan fungsi tfidfvectorizer. Kita juga telah menghasilkan matriks yang menunjukkan korelasi antara judul buku dengan penulis. Selanjutnya, kita akan menghitung derajat kesamaan antara satu buku dengan penulis lainnya untuk menghasilkan kandidat penulis yang akan direkomendasikan.
 
 ###### Cosine Similarity
 
