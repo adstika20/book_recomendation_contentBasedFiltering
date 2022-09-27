@@ -75,7 +75,9 @@ Data Buku
 |0374157065|Flu: The Story of the Great Influenza Pandemic|Gina Bari Kolata|1999|Farrar Straus Giroux|http://images.amazon.com/images/P/0374157065.0|	http://images.amazon.com/images/P/0374157065.0|http://images.amazon.com/images/P/0374157065.0|
 |0393045218|The Mummies of Urumchi|E. J. W. Barber|1999|W. W. Norton &amp; Company|http://images.amazon.com/images/P/0393045218.0|http://images.amazon.com/images/P/0393045218.0|http://images.amazon.com/images/P/0393045218.0|
 
-Output diatas menampilkan data-data yang terdapat pada dataset buku.
+Gambar 1. Data Buku
+
+Gambar 1 menampilkan data-data yang terdapat pada dataset buku.
 
 Data Rating
 
@@ -86,8 +88,10 @@ Data Rating
 |276727|0446520802|0|
 |276729|052165615X|3|
 |276729	|0521795028|6|
+
+Gambar 2. Data Rating
 	
-Menampilkan user_id, ISBN buku dan jumlah rating pada buku.
+Gambar 2 menampilkan user_id, ISBN buku dan jumlah rating pada buku.
 
 Mengecek informasi pada dataset buku dengan fungsi info() berikut.
 
@@ -105,10 +109,12 @@ Data columns (total 8 columns):
  |6|   Image-URL-M |        10000 non-null | object |
  |7|   Image-URL-L |          10000 non-null | object |
  
+ Gambar 3. Info Buku
+ 
 dtypes: object(8)
 memory usage: 625.1+ KB
 
-Berdasarkan informasi buku dataset memiliki 8 kolom dengan tipe object yaitu ISBN, title, author, year_of_publication dan publisher,Image-URL-S,Image-URL-M,Image-URL-L
+Berdasarkan informasi Gambar 3 dataset buku memiliki 8 kolom dengan tipe object yaitu ISBN, title, author, year_of_publication dan publisher,Image-URL-S,Image-URL-M,Image-URL-L
 
 Mengecek informasi pada dataset rating dengan fungsi info() berikut.
 
@@ -121,6 +127,8 @@ Data columns (total 3 columns):
  |1|   ISBN |        5000 non-null |  object|
  |2|   Book-Rating | 5000 non-null |  int64 |
  
+ Gambar 4. Info Rating
+ 
 dtypes: int64(2), object(1)
 memory usage: 117.3+ KB
 
@@ -132,19 +140,19 @@ Selanjutnya kita perlu menamai ulang kolom-kolom dari setiap file karena nama ko
 
 ![image](https://user-images.githubusercontent.com/110407053/192126113-b68c29d5-a43b-4ebf-8955-fbd4c07fe058.png)
 
-Gambar 1. Top Author
+Gambar 5. Top Author
 
 Top 50 author menggunakan px.bar, setiap baris DataFrame direpresentasikan sebagai tanda persegi panjang dapat dilihat pada Gambar 1. Gambar 1 menunjukan bahwa kategori penulis (top 50) terbanyak adalah stephen king dengan jumlah 70 buku 
 
 ![image](https://user-images.githubusercontent.com/110407053/192127390-b82f6f39-0f43-4502-8da7-6ca5a84a8dd9.png)
 
-Gambar 2. Top Book
+Gambar 6. Top Book
 
 Top 20 book menggunakan px.bar, setiap baris DataFrame direpresentasikan sebagai tanda persegi panjang dapat dilihat pada Gambar 2. Gambar 2 menunjukan bahwa buku teratas (top 20) diraih dengan judul The golden compass dengan jumlah 4 buku. 
 
 ![image](https://user-images.githubusercontent.com/110407053/192127095-1cf41a45-670c-45f8-8522-7e3346f83a62.png)
 
-Gambar 3. Rating distribution
+Gambar 7. Rating distribution
 
 Distribusi rating menggunakan Bart chart dapat dilihat pada Gambar 3. Pada Gambar 3, sebagian besar pengguna memberi rating 8 sejumlah lebih dari 120, ada beberapa informasi lain seperti :
 - Menghitung jumlah total rating 1116, jumlah rating explisit 485 dan jumlah rating implisit 631
@@ -185,8 +193,11 @@ Proses ini dilakukan pada metode _collaborative filtering_ dengan persiapan data
 |--------------|--------------|----------|----------|
 |679|4688|0.0|10.0|
 
+Tabel 1. Encode user_id
+
 Tahap persiapan telah selesai. Berikut adalah hal-hal yang telah kita lakukan pada tahap ini:
 
+- Tabel 1 menghitung jumlah user, nomor buku, dan jumlah min rating dan max rating
 - Memahami data rating yang kita miliki.
 - Menyandikan (encode) fitur ‘user_id’ dan ‘ISBN’ ke dalam indeks integer. 
 - Memetakan ‘user_id’ dan ‘ISBN’ ke dataframe yang berkaitan.
@@ -227,9 +238,9 @@ Dengan menggunakan argpartition, kita mengambil sejumlah nilai k tertinggi dari 
 |---------|----------|-----------|------------------------|
 |0965881199|The Diaries of Adam and Eve|Mark Twain|1998|
 
-Tabel 1. Rekomendasi Buku metode Content Based Filtering
+Tabel 2. Rekomendasi Buku metode Content Based Filtering
 
-Tabel 1 menginformasikan rekomendasi Buku "The Diaries of Adam and  Eve" ditulis oleh penulis bernama Mark Twain, ISBN 0965881199 dan dipublikasi tahun 1998.
+Tabel 2 menginformasikan rekomendasi Buku "The Diaries of Adam and  Eve" ditulis oleh penulis bernama Mark Twain, ISBN 0965881199 dan dipublikasi tahun 1998.
 Tentu kita berharap rekomendasi yang diberikan  adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku  recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
  
 |book_title|book_author|
@@ -240,9 +251,9 @@ Tentu kita berharap rekomendasi yang diberikan  adalah judul buku dengan kategor
 |Treasury of Illustrated Classics: Adventures|Mark Twain|
 |A Connecticut Yankee in King Arthur's Court|Mark Twain|
 
-Tabel 2. Top 5 Recommendation Content Based Filtering
+Tabel 3. Top 5 Recommendation Content Based Filtering
 
-Berdasarkan Tabel 2 di atas sistem merekomendasikan top 5 buku dengan judul buku "The Di aries of Adam and Eve" dengan penulis yang sama yaitu Mark Twain yang direkomendasikan sesuai dengan rekomendasi yang di minta sebelumnya.
+Berdasarkan Tabel 3 di atas sistem merekomendasikan top 5 buku dengan judul buku "The Di aries of Adam and Eve" dengan penulis yang sama yaitu Mark Twain yang direkomendasikan sesuai dengan rekomendasi yang di minta sebelumnya.
  
 #### 2. Model Development dengan Collaborative Filtering
  
@@ -278,9 +289,9 @@ Setelah dilakukan proses compile dan train model maka saatnya mendapatkan rekome
 |Ordinary People : Judith Guest|
 |Four Past Midnight : Stephen King|
 
-Gambar 4. Rekomendasi buku dengan teknik Collaborative Filtering
+Tabel 4. Rekomendasi buku dengan teknik Collaborative Filtering
 
-Pada output di atas kita telah berhasil memberikan rekomendasi kepada user 277235. dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
+Tabel 4 di atas kita telah berhasil memberikan rekomendasi kepada user 277235. dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
  
 ## Evaluation
  
@@ -293,7 +304,6 @@ Evaluasi dilakukan untuk mengetahui peforma akurasi dan error yang terjadi. RMSE
 Y  ' = Nilai Prediksi 
 Y    = Nilai Sejati
 n     = Jumlah Data
- 
  
 ![image](https://user-images.githubusercontent.com/110407053/192476092-abf9dc5d-5b3a-4360-b871-dabfe204eab1.png)
 
@@ -317,6 +327,7 @@ Seperti yang telah dijelaskan di tahap pemodelan menggunakan Collaborative Filte
 |Ordinary People : Judith Guest|
 |Four Past Midnight : Stephen King|
 
+ 
 Pada output di atas kita telah berhasil memberikan rekomendasi kepada user 277235. dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
  
 Prediksi yang dihasilkan cukup sesuai. Sampai di tahap ini, Anda telah berhasil me mbuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan  Collaborative Filtering. Sistem rekomendasi yang Anda buat telah berhasil memberikan  sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna. 
