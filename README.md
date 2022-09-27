@@ -67,7 +67,13 @@ Melihat book dataset dan rating dataset menggunakan fungsi head().
 
 Data Buku
 
-![image](https://user-images.githubusercontent.com/110407053/192125666-a2ab4ddd-2228-4a79-8c1c-88ce35eef5b3.png)
+|ISBN|book_title|book_author|book_year_of_publication|Publisher|Image-URL-S|Image-URL-M|Image-URL-L|			
+|----|----------|-----------|------------------------|---------|-----------|-----------|-----------|
+|0195153448|Classical Mythology|Mark P. O.|Morford|2002|Oxford University Press|http://images.amazon.com/images/P/0195153448.0|http://images.amazon.com/images/P/0195153448.0|http://images.amazon.com/images/P/0195153448.0|
+|0002005018|Clara Callan|Richard Bruce Wright|2001|HarperFlamingo Canada|http://images.amazon.com/images/P/0002005018.0|http://images.amazon.com/images/P/0002005018.0|http://images.amazon.com/images/P/0002005018.0|
+|0060973129|Decision in Normandy|Carlo D'Este|1991|HarperPerennial|http://images.amazon.com/images/P/0060973129.0|http://images.amazon.com/images/P/0060973129.0|http://images.amazon.com/images/P/0060973129.0|
+|0374157065|Flu: The Story of the Great Influenza Pandemic|Gina Bari Kolata|1999|Farrar Straus Giroux|http://images.amazon.com/images/P/0374157065.0|	http://images.amazon.com/images/P/0374157065.0|http://images.amazon.com/images/P/0374157065.0|
+|0393045218|The Mummies of Urumchi|E. J. W. Barber|1999|W. W. Norton &amp; Company|http://images.amazon.com/images/P/0393045218.0|http://images.amazon.com/images/P/0393045218.0|http://images.amazon.com/images/P/0393045218.0|
 
 Output diatas menampilkan data-data yang terdapat pada dataset buku.
 
