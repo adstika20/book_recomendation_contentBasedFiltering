@@ -284,10 +284,6 @@ n     = Jumlah Data
  
 Hasil training menggunakan metrik RMSE 
  
-![image](https://user-images.githubusercontent.com/110407053/192476254-c691342b-092e-4c1f-8f80-901773c31a68.png)
-
-Gambar 4. Training model
- 
 ![image](https://user-images.githubusercontent.com/110407053/192476092-abf9dc5d-5b3a-4360-b871-dabfe204eab1.png)
 
 Gambar 4. Visualisasi Matrik 
@@ -298,6 +294,7 @@ Seperti yang telah dijelaskan di tahap pemodelan menggunakan Collaborative Filte
  
 ![image](https://user-images.githubusercontent.com/110407053/192476731-688d534d-00b5-4d37-adfa-3989422dc279.png)
  
+ 
 Pada output di atas kita telah berhasil memberikan rekomendasi kepada user 277235. dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
  
 Prediksi yang dihasilkan cukup sesuai. Sampai di tahap ini, Anda telah berhasil me mbuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan  Collaborative Filtering. Sistem rekomendasi yang Anda buat telah berhasil memberikan  sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna. 
@@ -307,7 +304,7 @@ Prediksi yang dihasilkan cukup sesuai. Sampai di tahap ini, Anda telah berhasil 
 Matrik evaluasi dalam sistem rekomendasi metode Content Based Filtering menggunakan precision. Precision adalah jumlah item rekomendasi yang relevan.
 Rumus precision
 
-_recommender system precission (P)=  recommendations that are relevant / of items we recommended_
+_recommender system precission (P)=_  _recommendations that are relevant_ / _of items we recommended_
 
 Contoh cara kerja precision sistem memberi 5 item untuk direkomendasikan pada pengguna. Kemudian, dari 5 item itu, ada 3 yang relevan. Maka presisinya jadi 60%. 
 Pada proyek ini kita akan mencari rekomendai nama penulis dari judul buku "The Diaries of Adam and Eve" yang telah di baca. 
