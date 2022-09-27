@@ -22,7 +22,7 @@ Kembangkan sebuah sistem rekomendasi Buku untuk menjawab permasalahan berikut:
 ### Goals
 Untuk  menjawab pertanyaan tersebut, buatlah sistem rekomendasi dengan tujuan atau goals sebagai berikut:
 - Menghasilkan sejumlah rekomendasi Buku yang dipersonalisasi untuk pengguna dengan teknik _content-based filtering_.
-- Menghasilkan sejumlah rekomendasi Buku yang sesuai dengan preferensi pengguna dan belum pernah dibaca sebelumnya dengan teknik _collaborative filtering_.
+- Menghasilkan rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna berdasarkan rating dan belum pernah dibaca sebelumnya dengan teknik _collaborative filtering_.
 
 **Solution statements**:
 
@@ -127,25 +127,19 @@ Data buku dan rating tidak memiliki _missing value_ sehingga bisa diteruskan unt
 
 **2. Melihat jumlah data buku rate 10**
 
-Meneliti buku-buku yang di rate 10 oleh pengguna menggunakan dataset rating berdasarkan perbandingan ISBN buku dan nilai maksimal rating. Ternyata diperoleh sejumlah 300 buku yang dapat dikatakan best book.
+Meneliti buku-buku yang di rate 10 oleh pengguna menggunakan dataset rating berdasarkan perbandingan ISBN buku dan nilai maksimal rating. Ternyata diperoleh sejumlah 300 buku yang dapat dikatakan best book. Karena proyek ini hanya akan menggunakan data unik untuk dimasukkan ke dalam proses pemodelan. Oleh karena itu, perlu menghapus data yang duplikat dengan fungsi drop_duplicates(). Proses ini dilakukan supaya dataset tetap memiliki integritas dan tidak berulang.
 
-**3. Membuang data duplikat**
-
-Selanjutnya, proyek ini hanya akan menggunakan data unik untuk dimasukkan ke dalam proses pemodelan. Oleh karena itu, perlu menghapus data yang duplikat dengan fungsi drop_duplicates(). Proses ini dilakukan supaya dataset tetap memiliki integritas dan tidak berulang.
-
-**4. konversi data series menjadi list**
+**3. konversi data series menjadi list**
 
 Selanjutnya, kita perlu melakukan konversi data series menjadi list (daftar). Dalam hal ini, kita menggunakan fungsi tolist() dari library numpy. Data yang dikonversi adalah dataset buku
 - Mengonversi data series ‘ISBN’ menjadi dalam bentuk list
 - Mengonversi data series ‘title’ menjadi dalam bentuk list
 - Mengonversi data series ‘author’ menjadi dalam bentuk list
 - Mengonversi data series ‘year_of_publication’ menjadi dalam bentuk list
+Setelah membuat list selanjutnya, kita akan membuat dictionary untuk menentukan pasangan key-value pada data book_ISBN, book_author, book_title dan book_year_of_publication yang telah kita siapkan sebelumnya. 
 
-**4. Membuat dictionary**
+**4. Encode user_id**
 
-Tahap berikutnya, kita akan membuat dictionary untuk menentukan pasangan key-value pada data book_ISBN, book_author, book_title dan book_year_of_publication yang telah kita siapkan sebelumnya. 
-
-###### Encode user_id
 Proses ini dilakukan pada metode _collaborative filtering_ dengan persiapan data untuk menyandikan (encode) fitur ‘user’ dan ‘user_id’ ke dalam indeks integer. Selanjutnya, lakukan hal yang sama pada fitur ‘ISBN’. Terakhir petakan ISBN dan user_id ke dataframe yang berkaitan. Output jumlah user, jumlah BUKU, dan mengubah nilai rating menjadi float.
 
 ![image](https://user-images.githubusercontent.com/110407053/192146479-cf897f6b-6c1a-4235-96e3-0cfbff2692e2.png)
@@ -180,19 +174,19 @@ Dengan cosine similarity, kita berhasil mengidentifikasi kesamaan antara satu bu
 
 ###### Mendapatkan Rekomendasi
  
-Sebelum melakukan rekomendasi, kita membuat fungsi author_recommendations dengan be berapa parameter sebagai berikut: 
+Sebelum melakukan rekomendasi, kita membuat fungsi author_recommendations dengan beberapa parameter sebagai berikut: 
  *  i : sebagai judul buku (index kemiripan dataframe)
 *   M : Dataframe mengenai similarity yang telah kita definisikan sebelumnya.
 *   items : nama dan fitur yang digunakan untuk mendefinisikan kemiripan, dalam hal ini  adalah 'book_title'  dan 'book_author'
 *  k  : banyak rekomendasi yang ingin diberikan
  
-Dengan menggunakan argpartition, kita mengambil sejumlah nilai k tertinggi dari si milarity data (dalam kasus ini: dataframe cosine_sim_df). Kemudian, kita mengambil  data dari bobot (tingkat kesamaan) tertinggi ke terendah. Data ini dimasukkan ke dalam  variabel closest. Berikutnya, kita perlu menghapus book_title' yang dicari agar tidak  muncul dalam daftar rekomendasi. Dalam kasus ini, nanti kita akan mencari nama penulis  dari judul buku "The Diaries of Adam and Eve" yang telah di baca. Oleh karena itu, perlu drop terlebih dahulu 'book_title', 'book_author' agar tidak mu ncul dalam daftar rekomendasi yang diberikan nanti. Berikut ini output rekomendasi judul buku "The Diaries of Adam and Eve".
+Dengan menggunakan argpartition, kita mengambil sejumlah nilai k tertinggi dari si milarity data (dalam kasus ini: dataframe cosine_sim_df). Kemudian, kita mengambil  data dari bobot (tingkat kesamaan) tertinggi ke terendah. Data ini dimasukkan ke dalam  variabel closest. Berikutnya, kita perlu menghapus book_title' yang dicari agar tidak  muncul dalam daftar rekomendasi. Dalam kasus ini, nanti kita akan mencari nama penulis  dari judul buku "The Diaries of Adam and Eve" yang telah di baca _user_. Oleh karena itu, perlu drop terlebih dahulu 'book_title', 'book_author' agar tidak muncul dalam daftar rekomendasi yang diberikan nanti. Berikut ini output rekomendasi judul buku "The Diaries of Adam and Eve".
 
 |book_ISBN|book_title|book_author|book_year_of_publication|
 |---------|----------|-----------|------------------------|
 |0965881199|The Diaries of Adam and Eve|Mark Twain|1998|
 
-Tabel 1
+Tabel 1. Rekomendasi Buku metode Content Based Filtering
 
 Tabel 1 menginformasikan rekomendasi Buku "The Diaries of Adam and  Eve" ditulis oleh penulis bernama Mark Twain, ISBN 0965881199 dan dipublikasi tahun 1998.
 Tentu kita berharap rekomendasi yang diberikan  adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku  recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
@@ -205,7 +199,7 @@ Tentu kita berharap rekomendasi yang diberikan  adalah judul buku dengan kategor
 |Treasury of Illustrated Classics: Adventures|Mark Twain|
 |A Connecticut Yankee in King Arthur's Court|Mark Twain|
 
-Tabel 2
+Tabel 2. Top 5 Recommendation Content Based Filtering
 
 Berdasarkan Tabel 2 di atas sistem merekomendasikan top 5 buku dengan judul buku "The Di aries of Adam and Eve" dengan penulis yang sama yaitu Mark Twain yang direkomendasikan sesuai dengan rekomendasi yang di minta sebelumnya.
  
@@ -213,7 +207,7 @@ Berdasarkan Tabel 2 di atas sistem merekomendasikan top 5 buku dengan judul buku
  
 Setelah sebelumnya dilakukan prosen  Mengubah userID menjadi list, kemudian Mapping us erID ke dataframe user Mapping ISBN ke dataframe BOOK maka saatnya bagian pem odelan. Collaborative filtering bergantung pada pendapat komunitas pengguna. Ia tidak  memerlukan atribut untuk setiap itemnya seperti pada sistem berbasis konten. Pada  materi ini, kita akan menerapkan teknik collaborative filtering untuk membuat sistem  rekomendasi. Teknik ini membutuhkan data rating dari user. Tahapan pemodelan proyek  ini menggunakan teknik RecommenderNet. 
  
-Goal proyek kita kali ini adalah menghasilkan rekomendasi sejumlah buku yang sesuai de ngan preferensi pengguna berdasarkan rating yang telah diberikan sebelumnya. Dari dat a rating pengguna, kita akan mengidentifikasi buku-buku yang mirip dan belum pern ah dibaca oleh pengguna untuk direkomendasikan. Kita akan menggunakan teknik  collaborative filtering untuk membuat rekomendasi ini. 
+Dari data rating pengguna, kita akan mengidentifikasi buku-buku yang mirip dan belum pernah dibaca oleh pengguna untuk direkomendasikan. Kita akan menggunakan teknik  collaborative filtering untuk membuat rekomendasi ini. 
  
 ###### Membagi Data untuk Training dan Validasi
  
@@ -227,18 +221,21 @@ Di sini, kita membuat class RecommenderNet dengan keras Model class. Kode class 
  
 ###### Top-N recommendation
  
-S etelah dilakukan proses compile dan train model maka saatnya mendapatkan rekomendasi un tuk menghasilkan rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna ber dasarkan rating yang telah diberikan sebelumnya. Dari data rating pengguna, kita akan  mengidentifikasi buku-buku yang mirip dan belum pernah dibaca oleh pengguna untuk  direkomendasikan. Berikut outputnya
+Setelah dilakukan proses compile dan train model maka saatnya mendapatkan rekomendasi untuk menghasilkan rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna ber dasarkan rating yang telah diberikan sebelumnya. Dari data rating pengguna, kita akan  mengidentifikasi buku-buku yang mirip dan belum pernah dibaca oleh pengguna untuk  direkomendasikan. Berikut outputnya :
  
 ![image](https://user-images.githubusercontent.com/110407053/192473664-826be691-9764-43cf-8b50-28c74d3a036c.png)
- 
-Pada output di atas kita telah berhasil memberikan rekomendasi kepada user 277235. da ri output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
- 
+
+Gambar 4. Rekomendasi buku dengan teknik Collaborative Filtering
+
+Pada output di atas kita telah berhasil memberikan rekomendasi kepada user 277235. dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
+
+
  
 ## Evaluation
  
 #### 1. Evaluation Model Development dengan Collaborative Filtering
  
-E valuasi dilakukan untuk mengetahui peforma akurasi dan error yang terjadi. RMSE Me lihat perbedaan antara peringkat yang diprediksi oleh sistem pemberi rekomendasi dan  peringkat aktual yang diberikan oleh pengguna. RMSE yang rendah menunjukkan bahwa  sistem pemberi rekomendasi mampu memprediksi peringkat pengguna secara akurat. Saya menggunakan metode evaluasi RMSE untuk mencari jumlah dari  kesalahan kuadrat atau selisih antara nilai sebenarnya dengan nilai prediksi yang  telah ditentukan.  Rumus formula RMSE adalah sebagai berikut : 
+Evaluasi dilakukan untuk mengetahui peforma akurasi dan error yang terjadi. RMSE Melihat perbedaan antara peringkat yang diprediksi oleh sistem pemberi rekomendasi dan  peringkat aktual yang diberikan oleh pengguna. RMSE yang rendah menunjukkan bahwa  sistem pemberi rekomendasi mampu memprediksi peringkat pengguna secara akurat. Saya menggunakan metode evaluasi RMSE untuk mencari jumlah dari  kesalahan kuadrat atau selisih antara nilai sebenarnya dengan nilai prediksi yang  telah ditentukan.  Rumus formula RMSE adalah sebagai berikut : 
 
 ![image](https://user-images.githubusercontent.com/110407053/192476524-3352009a-cc22-4a6b-bb98-817058df7b9f.png)
 
@@ -246,22 +243,25 @@ Y  ' = Nilai Prediksi
 Y    = Nilai Sejati
 n     = Jumlah Data
  
-D engan mengggunakan matriks RMSE output dari modelnya adalah sebagai berikut.
+Hasil training menggunakan metrik RMSE 
  
 ![image](https://user-images.githubusercontent.com/110407053/192476254-c691342b-092e-4c1f-8f80-901773c31a68.png)
 
+Gambar 4. Training model
  
 ![image](https://user-images.githubusercontent.com/110407053/192476092-abf9dc5d-5b3a-4360-b871-dabfe204eab1.png)
 
 Gambar 4. Visualisasi Matrik 
 
-Perhatikanlah, proses training model cukup baik dan model konvergen pada epochs se kitar 20. Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.22 dan  error pada data validasi sebesar 0.34. Nilai RMSE rendah menunjukkan bahwa variasi  nilai yang dihasilkan oleh suatu model prakiraan mendekati variasi nilai  obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai. Semakin kecil  nilai RMSE, semakin dekat nilai yang diprediksi dan diamati. Nilai tersebut cukup  bagus untuk sistem rekomendasi. Mencoba merekomendasi buku untuk menghasilkan  rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna berdasarkan rating  yang telah diberikan sebelumnya.
+Perhatikanlah hasil training model pada gambar 4, proses training model cukup baik dan model konvergen pada epochs se kitar 20. Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.22% dan  error pada data validasi sebesar 0.34%. Nilai RMSE rendah menunjukkan bahwa variasi  nilai yang dihasilkan oleh suatu model prakiraan mendekati variasi nilai  obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai. Semakin kecil  nilai RMSE, semakin dekat nilai yang diprediksi dan diamati. Nilai tersebut cukup  bagus untuk sistem rekomendasi. Untuk memudahkan dalam memahami hasil training dapat dilihat pada gambar 5 visualisasi model metric.
+
+Seperti yang telah dijelaskan di tahap pemodelan menggunakan Collaborative Filtering, mari kita mencoba kembali merekomendasi buku yang sesuai dengan preferensi pengguna berdasarkan rating  yang telah diberikan sebelumnya.
  
 ![image](https://user-images.githubusercontent.com/110407053/192476731-688d534d-00b5-4d37-adfa-3989422dc279.png)
  
-Pada output di atas kita telah berhasil memberikan rekomendasi kepada user 277235. da ri output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
+Pada output di atas kita telah berhasil memberikan rekomendasi kepada user 277235. dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
  
-P rediksi yang dihasilkan cukup sesuai. Sampai di tahap ini, Anda telah berhasil me mbuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan  Collaborative Filtering. Sistem rekomendasi yang Anda buat telah berhasil memberikan  sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna. 
+Prediksi yang dihasilkan cukup sesuai. Sampai di tahap ini, Anda telah berhasil me mbuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan  Collaborative Filtering. Sistem rekomendasi yang Anda buat telah berhasil memberikan  sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna. 
  
 #### 2. Evaluation Model Development dengan Content Based Filtering
 
@@ -277,7 +277,7 @@ Pada proyek ini kita akan mencari rekomendai nama penulis dari judul buku "The D
 |---------|----------|-----------|------------------------|
 |0965881199|The Diaries of Adam and Eve|Mark Twain|1998|
 
-Tabel 3.
+Tabel 3. Rekomendasi buku dengan teknik Content Based Filtering
 
 Dari hasil rekomendasi di atas, diketahui buku "The Diaries of Adam and Eve" penulisnya adalah Mark Twain. Tentu kita berharap rekomendasi yang diberikan adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
 
@@ -289,7 +289,7 @@ Dari hasil rekomendasi di atas, diketahui buku "The Diaries of Adam and Eve" pen
 |Treasury of Illustrated Classics: Adventures|Mark Twain|
 |A Connecticut Yankee in King Arthur's Court|Mark Twain|
 
-Tabel 4.
+Tabel 5. Rekomendasi buku top 5 dengan teknik Content Based Filtering
 
 Semua item yang direkomendasikan memiliki penulis yang sama yaitu Mark Twain (similar). Artinya, precision sistem kita sebesar 5/5 atau 100%.
 atau dapat ditulis 
@@ -303,7 +303,12 @@ Selain itu, ada metode lain untuk evaluasi untuk model berbasis konten dengan me
 - Variabel books_with_the_same_author menunjukkan jumlah buku yang sudah ditulis oleh penulis buku yang berasal dari buku yang pernah dibaca sebelumnya
 - Ternyata buku yang telah ditulis oleh Mark Twain berjumlah 16 buku. Jadi jumlah akurasi dari model adalah 31, 25 %
 
-Sampai di tahap ini, proyek ini telah berhasil membuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan Collaborative Filtering. Sistem rekomendasi yang telah dibuat berhasil memberikan sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna. 
+## KESIMPULAN 
+
+Sampai di tahap ini, proyek ini telah berhasil membuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan Collaborative Filtering. Sistem rekomendasi yang telah dibuat berhasil memberikan sejumlah rekomendasi buku yang sesuai 
+
+
+dengan preferensi pengguna. 
 
 ## REFERENCES
 
