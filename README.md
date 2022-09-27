@@ -304,8 +304,7 @@ Selain itu, ada metode lain untuk evaluasi untuk model berbasis konten dengan me
 - Ternyata buku yang telah ditulis oleh Mark Twain berjumlah 16 buku. Jadi jumlah akurasi dari model adalah 31, 25 %
 
 ## KESIMPULAN 
-
-Sampai di tahap ini, proyek ini telah berhasil membuat sistem rekomendasi dengan dua teknik, yaitu _Content based Filtering_ dan _Collaborative Filtering_. Dengan teknik _Content based Filtering_ telah berhasil menghasilkan sejumlah rekomendasi Buku yang dipersonalisasi untuk pengguna. Selain itu, dengan teknik _Collaborative Filtering_ telah berhasil Menghasilkan rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna berdasarkan rating dan belum pernah dibaca sebelumnya.
+Disimpulkan bahwa penggunaan metode collaborative filtering dan Content based Filtering dapat memberikan suatu saran rekomendasi kepada user secara efektif. Dengan teknik Content based Filtering telah berhasil menghasilkan sejumlah rekomendasi Buku yang dipersonalisasi untuk pengguna. Selain itu, dengan teknik Collaborative Filtering telah berhasil Menghasilkan rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna berdasarkan rating dan belum pernah dibaca sebelumnya.
 
 
 ## REFERENCES
