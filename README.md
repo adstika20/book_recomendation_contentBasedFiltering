@@ -89,9 +89,7 @@ Data Rating
 	
 Menampilkan user_id, ISBN buku dan jumlah rating pada buku.
 
-Mengecek informasi pada dataset dengan fungsi info() berikut.
-
-
+Mengecek informasi pada dataset buku dengan fungsi info() berikut.
 
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 10000 entries, 0 to 9999
@@ -109,27 +107,20 @@ Data columns (total 8 columns):
 dtypes: object(8)
 memory usage: 625.1+ KB
 
+Berdasarkan informasi buku dataset memiliki 5 kolom dengan tipe object yaitu ISBN, title, author, year_of_publication dan publisher.
 
-# melihat info dataset buku
+Mengecek informasi pada dataset rating dengan fungsi info() berikut.
 rating_dataset.info()
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 5000 entries, 0 to 4999
 Data columns (total 3 columns):
- #   Column       Non-Null Count  Dtype 
----  ------       --------------  ----- 
- 0   User-ID      5000 non-null   int64 
- 1   ISBN         5000 non-null   object
- 2   Book-Rating  5000 non-null   int64 
+ |#|  Column |  Non-Null Count | Dtype |
+ |-|  ------ |  -------------- | ----- |
+ |0|  User-ID |     5000 non-null |  int64 |
+ |1|   ISBN |        5000 non-null |  object|
+ |2|   Book-Rating | 5000 non-null |  int64 |
 dtypes: int64(2), object(1)
 memory usage: 117.3+ KB
-
-
-
-
-
-Berdasarkan informasi buku dataset memiliki 5 kolom dengan tipe object yaitu ISBN, title, author, year_of_publication dan publisher.
-
-![image](https://user-images.githubusercontent.com/110407053/192125751-9d8f3903-394b-4be4-b502-0455e1958e0f.png)
 
 Berdasarkan informasi rating dataset memiliki 2 kolom dengan tipe int64 yaitu user_id, rating dan 1 bertipe object yaitu ISBN
 
