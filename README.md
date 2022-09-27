@@ -143,7 +143,7 @@ Selanjutnya, kita perlu melakukan konversi data series menjadi list (daftar). Da
 
 **4. Membuat dictionary**
 
-Tahap berikutnya, kita akan membuat dictionary untuk menentukan pasangan key-value pada data book_ISBN, book_author, book_title dan book_year_of_publication yang telah kita siapkan sebelumnya.
+Tahap berikutnya, kita akan membuat dictionary untuk menentukan pasangan key-value pada data book_ISBN, book_author, book_title dan book_year_of_publication yang telah kita siapkan sebelumnya. 
 
 ###### Encode user_id
 Proses ini dilakukan pada metode _collaborative filtering_ dengan persiapan data untuk menyandikan (encode) fitur ‘user’ dan ‘user_id’ ke dalam indeks integer. Selanjutnya, lakukan hal yang sama pada fitur ‘ISBN’. Terakhir petakan ISBN dan user_id ke dataframe yang berkaitan. Output jumlah user, jumlah BUKU, dan mengubah nilai rating menjadi float.
@@ -180,11 +180,6 @@ Cosine Similarity mengukur kesamaan antara dua vektor ruang hasil kali dalam. In
 
 Dengan cosine similarity, kita berhasil mengidentifikasi kesamaan antara satu buku dengan buku lainnya. Shape (10000, 10000) merupakan ukuran matriks similarity dari data yang kita miliki. Berdasarkan data yang ada, matriks di atas sebenarnya berukuran 10000 judul buku  x 10000 judul buku (masing-masing dalam sumbu X dan Y). Artinya, kita mengidentifikasi tingkat kesamaan pada 10000 judul buku. Tapi tentu kita tidak bisa menampilkan semuanya. Oleh karena itu, kita hanya memilih 10 judul buku pada baris vertikal dan 5 buku pada sumbu horizontal seperti pada contoh di atas. 
 
-|book_ISBN|book_title|book_author|book_year_of_publication|
-|---------|----------|-----------|------------------------|
-|0965881199|The Diaries of Adam and Eve|Mark Twain|1998|
-
-Tabel 1 
 ###### Mendapatkan Rekomendasi
  
 Sebelum melakukan rekomendasi, kita membuat fungsi author_recommendations dengan be berapa parameter sebagai berikut: 
@@ -193,9 +188,16 @@ Sebelum melakukan rekomendasi, kita membuat fungsi author_recommendations dengan
 *   items : nama dan fitur yang digunakan untuk mendefinisikan kemiripan, dalam hal ini  adalah 'book_title'  dan 'book_author'
 *  k  : banyak rekomendasi yang ingin diberikan
  
-Dengan menggunakan argpartition, kita mengambil sejumlah nilai k tertinggi dari si milarity data (dalam kasus ini: dataframe cosine_sim_df). Kemudian, kita mengambil  data dari bobot (tingkat kesamaan) tertinggi ke terendah. Data ini dimasukkan ke dalam  variabel closest. Berikutnya, kita perlu menghapus book_title' yang dicari agar tidak  muncul dalam daftar rekomendasi. Dalam kasus ini, nanti kita akan mencari nama penulis  dari judul buku "The Diaries of Adam and Eve" yang telah di baca, selain nama nanti  akan keluar informasi ISBN, judul buku lain yang mirip , dan  tahun publikasi. 
- 
-Oleh karena itu, perlu drop terlebih dahulu 'book_title', 'book_author' agar tidak mu ncul dalam daftar rekomendasi yang diberikan nanti.  Buku "The Diaries of Adam and  Eve" penulisnya adalah Mark Twain. Tentu kita berharap rekomendasi yang diberikan  adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku  recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
+Dengan menggunakan argpartition, kita mengambil sejumlah nilai k tertinggi dari si milarity data (dalam kasus ini: dataframe cosine_sim_df). Kemudian, kita mengambil  data dari bobot (tingkat kesamaan) tertinggi ke terendah. Data ini dimasukkan ke dalam  variabel closest. Berikutnya, kita perlu menghapus book_title' yang dicari agar tidak  muncul dalam daftar rekomendasi. Dalam kasus ini, nanti kita akan mencari nama penulis  dari judul buku "The Diaries of Adam and Eve" yang telah di baca. Oleh karena itu, perlu drop terlebih dahulu 'book_title', 'book_author' agar tidak mu ncul dalam daftar rekomendasi yang diberikan nanti. Berikut ini output rekomendasi judul buku "The Diaries of Adam and Eve".
+
+|book_ISBN|book_title|book_author|book_year_of_publication|
+|---------|----------|-----------|------------------------|
+|0965881199|The Diaries of Adam and Eve|Mark Twain|1998|
+
+Tabel 1
+
+Tabel 1 menginformasikan rekomendasi Buku "The Diaries of Adam and  Eve" ditulis oleh penulis bernama Mark Twain, ISBN 0965881199 dan dipublikasi tahun 1998.
+Tentu kita berharap rekomendasi yang diberikan  adalah judul buku dengan kategori yang mirip. Nah, sekarang, dapatkan judul buku  recommendation dengan memanggil fungsi yang telah kita definisikan sebelumnya:
  
 |book_title|book_author|
 |----------|-----------|
@@ -206,7 +208,8 @@ Oleh karena itu, perlu drop terlebih dahulu 'book_title', 'book_author' agar tid
 |A Connecticut Yankee in King Arthur's Court|Mark Twain|
 
 Tabel 2
-Berdasarkan output di atas sistem merekomendasikan top 5 buku dengan judul buku "The Di aries of Adam and Eve" penulisnya adalah Mark Twain yang direkomendasikan sesuai den gan rekomendasi yang di minta sebelumnya.
+
+Berdasarkan Tabel 2 di atas sistem merekomendasikan top 5 buku dengan judul buku "The Di aries of Adam and Eve" dengan penulis yang sama yaitu Mark Twain yang direkomendasikan sesuai dengan rekomendasi yang di minta sebelumnya.
  
 #### 2. Model Development dengan Collaborative Filtering
  
