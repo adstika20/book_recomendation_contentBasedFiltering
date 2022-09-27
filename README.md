@@ -181,7 +181,9 @@ Setelah membuat list selanjutnya, kita akan membuat dictionary untuk menentukan 
 
 Proses ini dilakukan pada metode _collaborative filtering_ dengan persiapan data untuk menyandikan (encode) fitur ‘user’ dan ‘user_id’ ke dalam indeks integer. Selanjutnya, lakukan hal yang sama pada fitur ‘ISBN’. Terakhir petakan ISBN dan user_id ke dataframe yang berkaitan. Output jumlah user, jumlah BUKU, dan mengubah nilai rating menjadi float.
 
-![image](https://user-images.githubusercontent.com/110407053/192146479-cf897f6b-6c1a-4235-96e3-0cfbff2692e2.png)
+|Number of User|Number of Buku|Min Rating|Min Rating|
+|--------------|--------------|----------|----------|
+|679|4688|0.0|10.0|
 
 Tahap persiapan telah selesai. Berikut adalah hal-hal yang telah kita lakukan pada tahap ini:
 
@@ -261,14 +263,24 @@ Di sini, kita membuat class RecommenderNet dengan keras Model class. Kode class 
 ###### Top-N recommendation
  
 Setelah dilakukan proses compile dan train model maka saatnya mendapatkan rekomendasi untuk menghasilkan rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna ber dasarkan rating yang telah diberikan sebelumnya. Dari data rating pengguna, kita akan  mengidentifikasi buku-buku yang mirip dan belum pernah dibaca oleh pengguna untuk  direkomendasikan. Berikut outputnya :
- 
-![image](https://user-images.githubusercontent.com/110407053/192473664-826be691-9764-43cf-8b50-28c74d3a036c.png)
+
+|The Pelican Brief : John Grisham|
+|--------------------------------|
+|Top 10 Book Recommendation for user: 277639|
+|The Funhouse : Dean R. Koontz|
+|A Time to Kill : JOHN GRISHAM|
+|Fear Nothing : DEAN KOONTZ|
+|The Pelican Brief : John Grisham|
+|Violets Are Blue : James Patterson|
+|Dark Rivers of the Heart : Dean R. Koontz|
+|The Client : John Grisham|
+|Fortune's Hand : Belva Plain|
+|Ordinary People : Judith Guest|
+|Four Past Midnight : Stephen King|
 
 Gambar 4. Rekomendasi buku dengan teknik Collaborative Filtering
 
 Pada output di atas kita telah berhasil memberikan rekomendasi kepada user 277235. dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
-
-
  
 ## Evaluation
  
@@ -282,7 +294,6 @@ Y  ' = Nilai Prediksi
 Y    = Nilai Sejati
 n     = Jumlah Data
  
-Hasil training menggunakan metrik RMSE 
  
 ![image](https://user-images.githubusercontent.com/110407053/192476092-abf9dc5d-5b3a-4360-b871-dabfe204eab1.png)
 
@@ -291,10 +302,21 @@ Gambar 4. Visualisasi Matrik
 Perhatikanlah hasil training model pada gambar 4, proses training model cukup baik dan model konvergen pada epochs se kitar 20. Dari proses ini, kita memperoleh nilai error akhir sebesar sekitar 0.22% dan  error pada data validasi sebesar 0.34%. Nilai RMSE rendah menunjukkan bahwa variasi  nilai yang dihasilkan oleh suatu model prakiraan mendekati variasi nilai  obeservasinya. RMSE menghitung seberapa berbedanya seperangkat nilai. Semakin kecil  nilai RMSE, semakin dekat nilai yang diprediksi dan diamati. Nilai tersebut cukup  bagus untuk sistem rekomendasi. Untuk memudahkan dalam memahami hasil training dapat dilihat pada gambar 5 visualisasi model metric.
 
 Seperti yang telah dijelaskan di tahap pemodelan menggunakan Collaborative Filtering, mari kita mencoba kembali merekomendasi buku yang sesuai dengan preferensi pengguna berdasarkan rating  yang telah diberikan sebelumnya.
- 
-![image](https://user-images.githubusercontent.com/110407053/192476731-688d534d-00b5-4d37-adfa-3989422dc279.png)
- 
- 
+
+ |The Pelican Brief : John Grisham|
+|--------------------------------|
+|Top 10 Book Recommendation for user: 277639|
+|The Funhouse : Dean R. Koontz|
+|A Time to Kill : JOHN GRISHAM|
+|Fear Nothing : DEAN KOONTZ|
+|The Pelican Brief : John Grisham|
+|Violets Are Blue : James Patterson|
+|Dark Rivers of the Heart : Dean R. Koontz|
+|The Client : John Grisham|
+|Fortune's Hand : Belva Plain|
+|Ordinary People : Judith Guest|
+|Four Past Midnight : Stephen King|
+
 Pada output di atas kita telah berhasil memberikan rekomendasi kepada user 277235. dari output  kita dapat membandingkan antara  books_have_been_read_by_user (buku yang  sudah pernah dibaca pengguna) yaitu buku "The Pelican Brief" penulisnya "John Grisham"  dan Kita memperoleh rekomendasi judul buku Top 10 Book Recommendation untuk user yaitu  ada 3 kategori buku yang belum pernah dibaca yaitu  buku "A Time to Kill : JOHN  GRISHAM","The Client : John Grisham" , "The Pelican Brief : John Grisham"
  
 Prediksi yang dihasilkan cukup sesuai. Sampai di tahap ini, Anda telah berhasil me mbuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan  Collaborative Filtering. Sistem rekomendasi yang Anda buat telah berhasil memberikan  sejumlah rekomendasi buku yang sesuai dengan preferensi pengguna. 
@@ -304,7 +326,7 @@ Prediksi yang dihasilkan cukup sesuai. Sampai di tahap ini, Anda telah berhasil 
 Matrik evaluasi dalam sistem rekomendasi metode Content Based Filtering menggunakan precision. Precision adalah jumlah item rekomendasi yang relevan.
 Rumus precision
 
-_recommender system precission (P)=_  _recommendations that are relevant_ / _of items we recommended_
+_Recommender system precision (P) = of our recommendations that are relevant / of items we recommended_
 
 Contoh cara kerja precision sistem memberi 5 item untuk direkomendasikan pada pengguna. Kemudian, dari 5 item itu, ada 3 yang relevan. Maka presisinya jadi 60%. 
 Pada proyek ini kita akan mencari rekomendai nama penulis dari judul buku "The Diaries of Adam and Eve" yang telah di baca. 
