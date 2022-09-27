@@ -79,8 +79,14 @@ Output diatas menampilkan data-data yang terdapat pada dataset buku.
 
 Data Rating
 
-![image](https://user-images.githubusercontent.com/110407053/192125641-d1c1bd8b-7153-4eb0-bb81-6c5d3b971cf2.png)
-
+|User-ID|ISBN	|Book-Rating|
+|-------|-----|-----------|
+|276725|034545104X|0|
+|276726|0155061224|5|
+|276727|0446520802|0|
+|276729|052165615X|3|
+|276729	|0521795028|6|
+	
 Menampilkan user_id, ISBN buku dan jumlah rating pada buku.
 
 Mengecek informasi pada dataset dengan fungsi info() berikut.
