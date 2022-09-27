@@ -53,6 +53,7 @@ Gambar di bawah ialah salah satu contoh sampul buku yang di akses menggunakan UR
 ![image](https://user-images.githubusercontent.com/110407053/192336996-f54dcccf-7055-44eb-9320-36630988389f.png)
 
 - Rating
+
 Pada file rating terdapat beberapa variabel-variabel yaitu :
 1. user_id : Id pengguna yang telah membaca dan memberi rating
 2. ISBN : untuk mengidentifikasi jenis-jenis buku
