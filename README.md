@@ -104,13 +104,14 @@ Data columns (total 8 columns):
  |5|   Image-URL-S |         10000 non-null | object |
  |6|   Image-URL-M |        10000 non-null | object |
  |7|   Image-URL-L |          10000 non-null | object |
+ 
 dtypes: object(8)
 memory usage: 625.1+ KB
 
-Berdasarkan informasi buku dataset memiliki 5 kolom dengan tipe object yaitu ISBN, title, author, year_of_publication dan publisher.
+Berdasarkan informasi buku dataset memiliki 8 kolom dengan tipe object yaitu ISBN, title, author, year_of_publication dan publisher,Image-URL-S,Image-URL-M,Image-URL-L
 
 Mengecek informasi pada dataset rating dengan fungsi info() berikut.
-rating_dataset.info()
+
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 5000 entries, 0 to 4999
 Data columns (total 3 columns):
@@ -119,10 +120,11 @@ Data columns (total 3 columns):
  |0|  User-ID |     5000 non-null |  int64 |
  |1|   ISBN |        5000 non-null |  object|
  |2|   Book-Rating | 5000 non-null |  int64 |
+ 
 dtypes: int64(2), object(1)
 memory usage: 117.3+ KB
 
-Berdasarkan informasi rating dataset memiliki 2 kolom dengan tipe int64 yaitu user_id, rating dan 1 bertipe object yaitu ISBN
+Berdasarkan informasi rating dataset memiliki 3 kolom dengan tipe int64 yaitu user_id, book_rating dan 1 bertipe object yaitu ISBN
 
 Selanjutnya kita perlu menamai ulang kolom-kolom dari setiap file karena nama kolom tersebut berisi spasi, dan huruf kapital sehingga perlu diperbaiki agar mudah digunakan. Semua nama kolom pada dataset buku dan dataset rating di ubah menggunakan fungsi rename(). Selain itu, pada dataset buku ada beberapa kolom yang di hapus dengan fungsi drop() karena tidak diperlukan untuk proyek ini seperti kolom Image-URL-S,Image-URL-M,Image-URL-L. 
 
