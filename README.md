@@ -305,10 +305,8 @@ Selain itu, ada metode lain untuk evaluasi untuk model berbasis konten dengan me
 
 ## KESIMPULAN 
 
-Sampai di tahap ini, proyek ini telah berhasil membuat sistem rekomendasi dengan dua teknik, yaitu Content based Filtering dan Collaborative Filtering. Sistem rekomendasi yang telah dibuat berhasil memberikan sejumlah rekomendasi buku yang sesuai 
+Sampai di tahap ini, proyek ini telah berhasil membuat sistem rekomendasi dengan dua teknik, yaitu _Content based Filtering_ dan _Collaborative Filtering_. Dengan teknik _Content based Filtering_ telah berhasil menghasilkan sejumlah rekomendasi Buku yang dipersonalisasi untuk pengguna. Selain itu, dengan teknik _Collaborative Filtering_ telah berhasil Menghasilkan rekomendasi sejumlah buku yang sesuai dengan preferensi pengguna berdasarkan rating dan belum pernah dibaca sebelumnya.
 
-
-dengan preferensi pengguna. 
 
 ## REFERENCES
 
